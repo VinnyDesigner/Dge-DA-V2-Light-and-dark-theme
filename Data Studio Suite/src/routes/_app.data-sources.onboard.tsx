@@ -253,7 +253,7 @@ function PhaseCard({ active, step, title, body, tag }: { active?: boolean; step:
 function SummaryItem({ label, value }: { label: string; value: string }) {
   return (
     <div className="mt-4">
-      <div className="text-[14px] font-semibold uppercase tracking-wider text-muted-foreground">{label}</div>
+      <div className="text-[14px] font-semibold tracking-wide text-muted-foreground">{label}</div>
       <div className="mt-1 rounded-lg border border-dashed border-foreground/10 bg-foreground/[0.02] px-3 py-2 text-center text-[15px] text-muted-foreground">
         {value}
       </div>

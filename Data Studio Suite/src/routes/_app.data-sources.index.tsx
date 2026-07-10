@@ -52,7 +52,7 @@ function DataSources() {
         <div className="scrollbar-thin overflow-x-auto">
           <table className="w-full text-[16px]">
             <thead>
-              <tr className="bg-foreground/[0.04] text-[12px] font-bold uppercase tracking-[0.14em] text-muted-foreground/70">
+              <tr className="bg-foreground/[0.04] text-[12px] font-bold tracking-wide text-muted-foreground/70">
                 <th className="py-3 pl-4"><input type="checkbox" className="h-3.5 w-3.5 rounded border-foreground/20 bg-foreground/5" /></th>
                 <th className="py-3 pr-4 text-left">Source</th>
                 <th className="py-3 pr-4 text-left">Entity</th>

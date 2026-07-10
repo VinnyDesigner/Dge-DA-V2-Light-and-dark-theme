@@ -174,7 +174,7 @@ export function StatCard({
       />
       <div className="relative flex items-start justify-between">
         <div>
-          <div className="text-[15px] font-medium uppercase tracking-wider text-muted-foreground">
+          <div className="text-[15px] font-medium tracking-wide text-muted-foreground">
             {label}
           </div>
           <div className="mt-2 text-[28px] font-bold leading-none tracking-tight text-foreground">

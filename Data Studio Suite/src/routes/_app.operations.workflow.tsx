@@ -163,7 +163,7 @@ function WorkflowPage() {
             <MetricPill icon={<Calendar className="h-3.5 w-3.5" />} label="Started" value="2026-06-27 16:45" tone="success" />
           </div>
 
-          <div className="mt-5 flex items-center gap-2 text-[16px] font-semibold uppercase tracking-wider text-muted-foreground">
+          <div className="mt-5 flex items-center gap-2 text-[16px] font-semibold tracking-wide text-muted-foreground">
             <span className="text-accent">#</span> Pipeline · 3 stages
           </div>
 
@@ -247,7 +247,7 @@ function MetricPill({ icon, label, value, tone }: { icon: React.ReactNode; label
       tone === "success" && "border-success/30",
       tone === "warning" && "border-warning/30",
     )}>
-      <div className="flex min-w-0 items-center gap-1.5 text-[13px] uppercase tracking-wider text-muted-foreground">
+      <div className="flex min-w-0 items-center gap-1.5 text-[13px] tracking-wide text-muted-foreground">
         <span className="shrink-0">{icon}</span>
         <span className="min-w-0 break-words leading-tight">{label}</span>
       </div>

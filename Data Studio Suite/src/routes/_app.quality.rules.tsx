@@ -63,9 +63,9 @@ type TabKey =
 
 const BASE_RULES: Rule[] = [
   { id: "RULE_01", name: "Verify Geodatabase Availability", description: "Scans AGENCY_FOLDER_PATH for .gdb and .mdb files. Copies the found GDB to WORKING_FOLDER. Fails if no GDB found.", appliesTo: "ALL", category: "Schema", severity: "error", enabled: true, status: "Existing" },
-  { id: "RULE_04", name: "Verify Disk Space", description: "Checks whether sufficient disk space is available before processing by comparing free space with the estimated geodatabase size.", appliesTo: "ALL", category: "Schema", severity: "warning", enabled: true, status: "New Proposed" },
   { id: "RULE_02", name: "Verify Layers Availability", description: "This rule verifies the geodatabase layers availability.", appliesTo: "ALL", category: "Schema", severity: "error", enabled: true, status: "Existing" },
   { id: "RULE_03", name: "Match Layers with FGDS", description: "Compares incoming layer names against the FGDS standard layer list.", appliesTo: "ALL", category: "Schema", severity: "warning", enabled: true, status: "Existing" },
+  { id: "RULE_04", name: "Verify Disk Space", description: "Checks whether sufficient disk space is available before processing by comparing free space with the estimated geodatabase size.", appliesTo: "ALL", category: "Schema", severity: "warning", enabled: true, status: "New Proposed" },
   { id: "RULE_05", name: "Record Layer Schema", description: "For each layer, reads all Fields and inserts field records — field name, type, length, domain name.", appliesTo: "ALL", category: "Schema", severity: "info", enabled: true, status: "Existing" },
   { id: "RULE_06", name: "Record Feature Count", description: "Counts features per layer via IFeatureClass.FeatureCount(Nothing) and stores counts.", appliesTo: "ALL", category: "Schema", severity: "info", enabled: true, status: "Existing" },
   { id: "RULE_07", name: "Verify Layers Projection", description: "Reads ISpatialReference from each layer's GeometryDef. Compares against GCS_WGS_1984_WKT. Records PASS/FAIL per layer.", appliesTo: "ALL", category: "Schema", severity: "error", enabled: true, status: "Existing" },
@@ -114,7 +114,9 @@ const SPATIAL_RULES: Rule[] = [
 ];
 
 const CONSISTENCY_RULES: Rule[] = [
-  { id: "RULE_44", name: "Missing Layers in Current Delivery", description: "Compares the list of layers in the current delivery against the previous delivery baseline and records any missing layers.", appliesTo: "ALL", category: "Consistency", severity: "error", enabled: true, status: "Existing" },
+  { id: "RULE_44", name: "Missing Layers in Current Delivery", description: "Compares the list of layers in the current delivery against the FGDS expected layer list. Reports layers that are missing from the current delivery but were present previously.", appliesTo: "ALL", category: "Consistency", severity: "error", enabled: true, status: "Existing" },
+  { id: "RULE_45", name: "Missing Fields in Current Delivery", description: "For each layer that is present, compares its field list against the FGDS schema definition. Reports fields that are missing or have changed type.", appliesTo: "ALL", category: "Consistency", severity: "error", enabled: true, status: "Existing" },
+  { id: "RULE_46", name: "Feature Count Comparison with Previous Delivery", description: "Compares the feature count for each layer in this delivery against the count recorded in the previous delivery. Reports layers where count dropped significantly.", appliesTo: "ALL", category: "Consistency", severity: "warning", enabled: true, status: "Existing" },
 ];
 
 const TRANSFORMATION_RULES: Rule[] = [
@@ -180,7 +182,7 @@ function KpiCard({
       >
         {value}
       </div>
-      <div className="mt-2 text-[13px] font-medium uppercase tracking-wider text-muted-foreground">
+      <div className="mt-2 text-[13px] font-medium tracking-wide text-muted-foreground">
         {label}
       </div>
     </Surface>
@@ -331,7 +333,7 @@ function QualityRulesPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-[14px]">
             <thead>
-              <tr className="border-b border-border/60 bg-foreground/[0.04] text-[12px] font-bold uppercase tracking-[0.14em] text-muted-foreground/80">
+              <tr className="border-b border-border/60 bg-foreground/[0.04] text-[12px] font-bold tracking-wide text-muted-foreground/80">
                 <Th className="w-10">
                   <input type="checkbox" className="rounded border-border/60 bg-transparent" />
                 </Th>
@@ -362,7 +364,7 @@ function QualityRulesPage() {
                     <p className="max-w-[520px] text-foreground/80">{r.description}</p>
                   </Td>
                   <Td>
-                    <span className="inline-flex items-center rounded-md bg-foreground/10 px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-foreground/80 ring-1 ring-inset ring-border/60">
+                    <span className="inline-flex items-center rounded-md bg-foreground/10 px-2 py-1 text-[11px] font-semibold tracking-wide text-foreground/80 ring-1 ring-inset ring-border/60">
                       {r.appliesTo}
                     </span>
                   </Td>

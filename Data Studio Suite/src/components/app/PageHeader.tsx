@@ -19,7 +19,7 @@ export function PageHeader({ title, description, actions, eyebrow, className }: 
     >
       <div className="min-w-0 space-y-1.5">
         {eyebrow && (
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary/10 px-2.5 py-0.5 text-[14px] font-semibold uppercase tracking-[0.14em] text-accent">
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary/10 px-2.5 py-0.5 text-[14px] font-semibold tracking-wide text-accent">
             {eyebrow}
           </div>
         )}

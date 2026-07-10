@@ -21,8 +21,6 @@ import {
   LineChart,
   Shield,
 } from "lucide-react";
-import dgeLogo from "@/assets/dge-logo.png.asset.json";
-import spatialLogo from "@/assets/abu-dhabi-spatial-data.png.asset.json";
 
 export const Route = createFileRoute("/login")({
   head: () => ({
@@ -86,12 +84,12 @@ function Login() {
           className="flex items-center justify-between gap-4 py-5 sm:py-6 lg:py-7"
         >
           <img
-            src={dgeLogo.url}
+            src="/DGE White.png"
             alt="Department of Government Enablement"
             className="h-8 w-auto shrink-0 object-contain opacity-95 sm:h-10 lg:h-11"
           />
           <img
-            src={spatialLogo.url}
+            src="/SDI White.png"
             alt="Abu Dhabi Spatial Data"
             className="h-7 w-auto shrink-0 object-contain opacity-90 sm:h-9 lg:h-10"
           />
@@ -119,7 +117,7 @@ function Login() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-success/30 bg-success/10 px-3 py-1 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-success"
+              className="mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-success/30 bg-success/10 px-3 py-1 text-[10.5px] font-semibold tracking-wide text-success"
             >
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success/70" />
@@ -521,7 +519,7 @@ function FloatingField({
 
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground/80">
+      <label className="text-[11px] font-semibold tracking-wide text-muted-foreground/80">
         {label}
       </label>
       <div

@@ -138,7 +138,7 @@ function ManageSchedulesPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-[14px]">
             <thead>
-              <tr className="border-b border-border/60 bg-foreground/[0.04] text-[12px] font-bold uppercase tracking-[0.14em] text-muted-foreground/70">
+              <tr className="border-b border-border/60 bg-foreground/[0.04] text-[12px] font-bold tracking-wide text-muted-foreground/70">
                 <th className="px-5 py-3"><input type="checkbox" className="rounded border-border/60 bg-card/60 accent-accent" /></th>
                 <SortTh>Scheduler Name</SortTh>
                 <SortTh>Entity</SortTh>

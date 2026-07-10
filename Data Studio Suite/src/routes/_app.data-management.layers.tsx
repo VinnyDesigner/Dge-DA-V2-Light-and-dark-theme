@@ -105,7 +105,7 @@ function LayersPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-[14px]">
             <thead>
-              <tr className="border-b border-border/60 bg-foreground/[0.04] text-[12px] font-bold uppercase tracking-[0.14em] text-muted-foreground/70">
+              <tr className="border-b border-border/60 bg-foreground/[0.04] text-[12px] font-bold tracking-wide text-muted-foreground/70">
                 {columns.map((c) => (
                   <th key={c} className="px-5 py-3 whitespace-nowrap">
                     <span className="inline-flex items-center gap-1">{c}<ChevronDown className="h-3 w-3 opacity-60" /></span>

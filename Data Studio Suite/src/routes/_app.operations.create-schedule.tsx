@@ -218,7 +218,7 @@ function CreateSchedulePage() {
             <PreviewRow icon={<Layers className="h-4 w-4" />} label="Layers" value="Not configured" />
             <PreviewRow icon={<Wrench className="h-4 w-4" />} label="Tool" value="Not configured" />
             <div className="rounded-lg border border-border/60 bg-card/40 p-3">
-              <div className="flex items-center gap-2 text-[15px] font-semibold uppercase tracking-wider text-muted-foreground">
+              <div className="flex items-center gap-2 text-[15px] font-semibold tracking-wide text-muted-foreground">
                 <Calendar className="h-4 w-4 text-accent" /> Schedule
               </div>
               <div className="mt-2 space-y-1.5 text-[16px]">
@@ -241,7 +241,7 @@ function CreateSchedulePage() {
 function PreviewRow({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
     <div className="rounded-lg border border-border/60 bg-card/40 p-3">
-      <div className="flex items-center gap-2 text-[15px] font-semibold uppercase tracking-wider text-muted-foreground">
+      <div className="flex items-center gap-2 text-[15px] font-semibold tracking-wide text-muted-foreground">
         <span className="text-accent">{icon}</span> {label}
       </div>
       <div className="mt-1.5 truncate text-[14px] font-medium text-foreground/90">{value}</div>

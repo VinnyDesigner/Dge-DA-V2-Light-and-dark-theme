@@ -209,7 +209,7 @@ function Dashboard() {
       {/* QUICK NAV */}
       <Surface className="!p-4">
         <div className="flex flex-wrap items-center gap-2">
-          <div className="mr-1 inline-flex items-center gap-1.5 text-[15px] font-semibold uppercase tracking-wider text-muted-foreground">
+          <div className="mr-1 inline-flex items-center gap-1.5 text-[15px] font-semibold tracking-wide text-muted-foreground">
             <Zap className="h-3 w-3 text-accent" /> Quick Nav
           </div>
           {quickNav.map((q) => (
@@ -609,7 +609,7 @@ function InlineMetric({
   return (
     <div className="min-w-0">
       <div className={`text-[32px] font-extrabold leading-none tracking-tight lg:text-[44px] ${isCount ? "text-danger" : "text-foreground"}`}>{value}</div>
-      <div className="mt-2 text-[13px] font-semibold uppercase tracking-[0.1em] text-foreground/60 lg:text-[14px]">{label}</div>
+      <div className="mt-2 text-[13px] font-semibold tracking-wide text-foreground/60 lg:text-[14px]">{label}</div>
       {hint && (
         <div
           className={`mt-1 text-[13px] font-medium lg:text-[15px] ${
@@ -703,7 +703,7 @@ function ModuleCard({
         <GlowCircle accent={accent} size="md">{icon}</GlowCircle>
         <div className="text-right">
           <div className="text-[34px] font-bold leading-none tracking-tight text-foreground lg:text-[40px]">{value}</div>
-          <div className="mt-1 text-[15px] uppercase tracking-wider text-muted-foreground lg:text-[16px]">{unit}</div>
+          <div className="mt-1 text-[15px] tracking-wide text-muted-foreground lg:text-[16px]">{unit}</div>
         </div>
       </div>
       <div className="relative mt-4 text-[15px] font-semibold text-foreground/90 lg:text-[16px]">{label}</div>
@@ -768,7 +768,7 @@ function MiniStat({
         <span className={`inline-flex h-6 w-6 items-center justify-center rounded-lg ring-1 ring-inset ${iconTone[tone]}`}>{i}</span>
         {up !== undefined && <ArrowUpRight className={`h-3 w-3 ${up ? "text-success" : "text-danger rotate-90"}`} />}
       </div>
-      <div className="mt-2 text-[15px] uppercase tracking-wider text-muted-foreground lg:text-[16px]">{l}</div>
+      <div className="mt-2 text-[15px] tracking-wide text-muted-foreground lg:text-[16px]">{l}</div>
       <div className="mt-0.5 text-[22px] font-bold leading-tight text-foreground lg:text-[26px]">{v}</div>
       <div className="mt-0.5 text-[13px] leading-snug text-muted-foreground lg:text-[14px]">{h}</div>
     </div>

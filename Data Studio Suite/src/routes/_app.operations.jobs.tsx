@@ -83,7 +83,7 @@ function JobsPage() {
         {stats.map((s) => (
           <Surface key={s.label} className="!p-4">
             <div className="flex items-start justify-between">
-              <div className="text-[16px] font-semibold uppercase tracking-wider text-muted-foreground">{s.label}</div>
+              <div className="text-[16px] font-semibold tracking-wide text-muted-foreground">{s.label}</div>
               <s.icon className={cn("h-4 w-4", toneBg(s.tone))} />
             </div>
             <div className={cn("mt-2 text-[32px] font-bold leading-none tracking-tight", toneBg(s.tone))}>{s.value}</div>
@@ -114,7 +114,7 @@ function JobsPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-[14px]">
             <thead>
-              <tr className="border-b border-border/60 bg-foreground/[0.04] text-[12px] font-bold uppercase tracking-[0.14em] text-muted-foreground/70">
+              <tr className="border-b border-border/60 bg-foreground/[0.04] text-[12px] font-bold tracking-wide text-muted-foreground/70">
                 <Th>Delivery</Th>
                 <Th>Flow Type</Th>
                 <Th>Entity</Th>

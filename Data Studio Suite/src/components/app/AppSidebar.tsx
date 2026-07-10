@@ -1,9 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ChevronRight } from "lucide-react";
-import socialFabricLogo from "@/assets/abu-dhabi-spatial-data.png.asset.json";
-import socialFabricLogoLight from "@/assets/abu-dhabi-spatial-data-light.png.asset.json";
-import sdiIconDark from "@/assets/sdi-logo-dark.png.asset.json";
-import sdiIconLight from "@/assets/sdi-logo-light.png.asset.json";
 import { useTheme } from "@/lib/theme";
 import {
   Sidebar,
@@ -33,8 +29,8 @@ export function AppSidebar() {
   const { state } = useSidebar();
   const isLight = theme === "light";
   const isCollapsed = state === "collapsed";
-  const headerLogo = isLight ? socialFabricLogoLight.url : socialFabricLogo.url;
-  const collapsedIcon = isLight ? sdiIconLight.url : sdiIconDark.url;
+  const headerLogo = isLight ? "/SDI For white.png" : "/SDI White.png";
+  const collapsedIcon = isLight ? "/sdi for white mini.png" : "/SDI Dark theme mini.png";
 
 
   return (
@@ -82,7 +78,7 @@ export function AppSidebar() {
             <Collapsible key={group.label} open={isCollapsed ? true : undefined} defaultOpen={hasActive} className="group/collapsible">
               <SidebarGroup className="py-0 group-data-[collapsible=icon]:px-1">
                 <SidebarGroupLabel asChild>
-                  <CollapsibleTrigger className="mt-2 flex w-full items-center justify-between overflow-hidden rounded-md px-2 py-1.5 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted-foreground/80 hover:text-foreground">
+                  <CollapsibleTrigger className="mt-2 flex w-full items-center justify-between overflow-hidden rounded-md px-2 py-1.5 text-[14px] font-semibold tracking-wide text-muted-foreground/80 hover:text-foreground">
                     <span className="truncate">{group.label}</span>
                     <ChevronRight className="h-3.5 w-3.5 shrink-0 transition-transform group-data-[state=open]/collapsible:rotate-90" />
                   </CollapsibleTrigger>

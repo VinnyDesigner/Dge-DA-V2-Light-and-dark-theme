@@ -4,7 +4,7 @@ import {
   RefreshCw,
   Search,
   Filter,
-  Truck,
+  Package,
   PieChart,
   Percent,
   CheckCircle2,
@@ -51,7 +51,7 @@ type Stat = {
 };
 
 const statsRow1: Stat[] = [
-  { label: "Deliveries", value: "1", tone: "neutral", icon: Truck },
+  { label: "Deliveries", value: "1", tone: "neutral", icon: Package },
   { label: "QA Coverage", value: "0%", sub: "0/1", tone: "neutral", icon: PieChart },
   { label: "Pass Rate", value: "—", tone: "success", icon: Percent },
   { label: "Passed", value: "0", tone: "neutral", icon: CheckCircle2 },
@@ -126,7 +126,7 @@ function StatCard({ s }: { s: Stat }) {
   return (
     <Surface className={cn("glossy-card !p-4", t.card)}>
       <div className="flex items-start justify-between">
-        <div className="text-[13px] font-semibold uppercase tracking-wider text-muted-foreground">
+        <div className="text-[13px] font-semibold tracking-wide text-muted-foreground">
           {s.label}
         </div>
         <s.icon className={cn("h-4 w-4", t.icon)} />
@@ -214,7 +214,7 @@ function DataQualityPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-[14px]">
             <thead>
-              <tr className="border-b border-border/60 bg-foreground/[0.04] text-[12px] font-bold uppercase tracking-[0.14em] text-muted-foreground/80">
+              <tr className="border-b border-border/60 bg-foreground/[0.04] text-[12px] font-bold tracking-wide text-muted-foreground/80">
                 <Th>Delivery</Th>
                 <Th>Stakeholder</Th>
                 <Th>Status</Th>
@@ -235,7 +235,8 @@ function DataQualityPage() {
                   className="border-b border-border/40 last:border-0 hover:bg-foreground/[0.02]"
                 >
                   <Td>
-                    <span className="font-semibold text-foreground">
+                    <span className="inline-flex items-center gap-2 font-semibold text-foreground">
+                      <Package className="h-4 w-4 text-muted-foreground" />
                       {r.delivery}
                     </span>
                   </Td>
