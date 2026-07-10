@@ -1,0 +1,194 @@
+import { Link, useRouterState } from "@tanstack/react-router";
+import { ChevronRight } from "lucide-react";
+import socialFabricLogo from "@/assets/abu-dhabi-spatial-data.png.asset.json";
+import socialFabricLogoLight from "@/assets/abu-dhabi-spatial-data-light.png.asset.json";
+import sdiIconDark from "@/assets/sdi-logo-dark.png.asset.json";
+import sdiIconLight from "@/assets/sdi-logo-light.png.asset.json";
+import { useTheme } from "@/lib/theme";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarTrigger,
+  useSidebar,
+} from "@/components/ui/sidebar";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { navGroups, navColorClass, navColorClassLight } from "./nav-config";
+import { cn } from "@/lib/utils";
+
+export function AppSidebar() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { theme } = useTheme();
+  const { state } = useSidebar();
+  const isLight = theme === "light";
+  const isCollapsed = state === "collapsed";
+  const headerLogo = isLight ? socialFabricLogoLight.url : socialFabricLogo.url;
+  const collapsedIcon = isLight ? sdiIconLight.url : sdiIconDark.url;
+
+
+  return (
+    <Sidebar collapsible="icon" className="border-r-0 !bg-transparent p-3 group-data-[collapsible=icon]:p-2 [&>[data-sidebar=sidebar]]:relative [&>[data-sidebar=sidebar]]:rounded-2xl [&>[data-sidebar=sidebar]]:border [&>[data-sidebar=sidebar]]:border-sidebar-border [&>[data-sidebar=sidebar]]:bg-[linear-gradient(180deg,var(--sidebar-glass-from)_0%,var(--sidebar-glass-to)_100%)] [&>[data-sidebar=sidebar]]:shadow-[var(--sidebar-shadow)] [&>[data-sidebar=sidebar]]:backdrop-blur-xl">
+      {/* Bottom soft gradient fade */}
+      <div
+        className="pointer-events-none absolute bottom-3 left-3 right-3 z-30 h-32 rounded-b-2xl"
+        style={{
+          background: isLight
+            ? "linear-gradient(to top, rgba(37, 99, 235, 0.18) 0%, rgba(37, 99, 235, 0.06) 50%, transparent 100%)"
+            : "linear-gradient(to top, rgba(91, 140, 255, 0.55) 0%, rgba(37, 99, 235, 0.22) 50%, transparent 100%)",
+        }}
+        aria-hidden="true"
+      />
+      <SidebarHeader className="px-3 py-5 group-data-[collapsible=icon]:px-0 group-data-[collapsible=icon]:py-4">
+        <div className="flex flex-col gap-2 group-data-[collapsible=icon]:items-center">
+          <Link to="/dashboard" className="flex min-w-0 items-center gap-3 group-data-[collapsible=icon]:justify-center">
+            <img
+              src={headerLogo}
+              alt="Abu Dhabi Spatial Data"
+              className={cn(
+                "h-auto w-auto max-w-[180px] object-contain group-data-[collapsible=icon]:hidden",
+                !isLight && "sidebar-logo",
+              )}
+            />
+            <img
+              src={collapsedIcon}
+              alt="SDI"
+              className="hidden h-10 w-10 object-contain group-data-[collapsible=icon]:block"
+            />
+          </Link>
+          <div className="flex w-full justify-end group-data-[collapsible=icon]:justify-center">
+            <SidebarTrigger className="h-8 w-8 shrink-0 rounded-lg border border-border/60 bg-card/60 text-muted-foreground transition-colors hover:border-accent/40 hover:text-foreground" />
+          </div>
+        </div>
+      </SidebarHeader>
+
+      <SidebarContent className="scrollbar-thin px-2 py-3 group-data-[collapsible=icon]:!overflow-y-auto group-data-[collapsible=icon]:px-0">
+
+
+        {navGroups.map((group) => {
+          const hasActive = group.items.some((i) => pathname.startsWith(i.url));
+          const iconColor = isLight ? navColorClassLight[group.color] : navColorClass[group.color];
+          return (
+            <Collapsible key={group.label} open={isCollapsed ? true : undefined} defaultOpen={hasActive} className="group/collapsible">
+              <SidebarGroup className="py-0 group-data-[collapsible=icon]:px-1">
+                <SidebarGroupLabel asChild>
+                  <CollapsibleTrigger className="mt-2 flex w-full items-center justify-between overflow-hidden rounded-md px-2 py-1.5 text-[14px] font-semibold uppercase tracking-[0.14em] text-muted-foreground/80 hover:text-foreground">
+                    <span className="truncate">{group.label}</span>
+                    <ChevronRight className="h-3.5 w-3.5 shrink-0 transition-transform group-data-[state=open]/collapsible:rotate-90" />
+                  </CollapsibleTrigger>
+                </SidebarGroupLabel>
+                <CollapsibleContent>
+                  <SidebarGroupContent>
+                    <SidebarMenu>
+                      {group.items.map((item) => {
+                        const active = pathname === item.url;
+                        return (
+                          <SidebarMenuItem key={item.url}>
+                            <SidebarMenuButton
+                              asChild
+                              isActive={active}
+                              tooltip={item.title}
+                              className={cn(
+                                "group/item relative h-auto min-h-11 overflow-hidden rounded-xl px-3.5 py-2 text-[16px] font-medium text-sidebar-foreground/90 transition-all",
+                                "group-data-[collapsible=icon]:!min-h-10 group-data-[collapsible=icon]:!h-10 group-data-[collapsible=icon]:!w-10 group-data-[collapsible=icon]:!px-0 group-data-[collapsible=icon]:!py-0 group-data-[collapsible=icon]:justify-center",
+                                "hover:bg-[var(--sidebar-hover)] hover:text-foreground",
+                                !isLight && "data-[active=true]:!bg-[radial-gradient(120%_140%_at_50%_50%,rgba(37,99,235,0.22)_0%,rgba(37,99,235,0.08)_55%,var(--sidebar-active-edge)_100%)]",
+                                !isLight && "data-[active=true]:text-sidebar-accent-foreground",
+                                !isLight && "data-[active=true]:ring-1 data-[active=true]:ring-inset data-[active=true]:ring-[rgba(91,140,255,0.55)]",
+                                !isLight && "data-[active=true]:shadow-[0_0_0_1px_rgba(37,99,235,0.35),0_8px_24px_-8px_rgba(37,99,235,0.55),inset_0_1px_0_rgba(255,255,255,0.08)]",
+                                isLight && active && "!bg-[linear-gradient(180deg,rgba(255,255,255,0.98)_0%,rgba(248,250,252,0.95)_40%,rgba(241,245,249,0.92)_100%)]",
+                                isLight && active && "border border-slate-400/25 !shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_1px_2px_rgba(15,23,42,0.05),0_6px_16px_-6px_rgba(15,23,42,0.08)]",
+                                isLight && active && "text-[#0f172a]",
+                              )}
+                            >
+                              <Link to={item.url}>
+                                {active && !isLight && (
+                                  <>
+                                    <span className="pointer-events-none absolute inset-0 rounded-xl bg-[radial-gradient(1px_1px_at_20%_30%,rgba(255,255,255,0.6),transparent_60%),radial-gradient(1px_1px_at_70%_60%,rgba(255,255,255,0.45),transparent_60%),radial-gradient(1px_1px_at_85%_25%,rgba(255,255,255,0.5),transparent_60%),radial-gradient(1px_1px_at_40%_80%,rgba(255,255,255,0.35),transparent_60%)] opacity-70" />
+                                    <span className="pointer-events-none absolute inset-y-0 right-0 w-1/3 rounded-r-xl bg-[linear-gradient(90deg,transparent_0%,rgba(91,140,255,0.35)_100%)]" />
+                                  </>
+                                )}
+                                {active && isLight && (
+                                  <span className="pointer-events-none absolute inset-0 rounded-xl bg-[linear-gradient(180deg,rgba(255,255,255,0.65)_0%,rgba(255,255,255,0.2)_45%,transparent_70%)]" />
+                                )}
+
+                                <item.icon
+                                  className={cn(
+                                    "relative h-[18px] w-[18px] shrink-0 transition-colors",
+                                    iconColor,
+                                    "group-hover/item:brightness-125",
+                                  )}
+                                />
+                                <span className="relative min-w-0 flex-1 whitespace-normal break-words leading-tight group-data-[collapsible=icon]:hidden">{item.title}</span>
+                                {item.badge && (
+                                  <span
+                                    className={cn(
+                                      "relative ml-auto shrink-0 rounded-md px-1.5 py-0.5 text-[12px] font-semibold ring-1 ring-inset group-data-[collapsible=icon]:hidden",
+                                      item.badge === "Live"
+                                        ? "bg-success/15 text-success ring-success/30"
+                                        : "bg-[var(--sidebar-badge-bg)] text-sidebar-accent-foreground ring-[var(--sidebar-badge-border)]",
+                                    )}
+                                  >
+                                    {item.badge === "Live" && (
+                                      <span className="mr-1 inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-success align-middle" />
+                                    )}
+                                    {item.badge}
+                                  </span>
+                                )}
+                              </Link>
+                            </SidebarMenuButton>
+                          </SidebarMenuItem>
+                        );
+                      })}
+                    </SidebarMenu>
+                  </SidebarGroupContent>
+                </CollapsibleContent>
+              </SidebarGroup>
+            </Collapsible>
+          );
+        })}
+      </SidebarContent>
+
+      <SidebarFooter className="space-y-3 p-3 group-data-[collapsible=icon]:hidden">
+        <div className="space-y-2.5 rounded-xl border border-foreground/5 bg-[var(--sidebar-footer-bg)] p-3">
+          <div className="flex items-center justify-between text-[14px]">
+            <span className="text-muted-foreground">Environment</span>
+            <span className="rounded-md bg-success/15 px-1.5 py-0.5 font-medium text-success ring-1 ring-inset ring-success/25">
+              Production
+            </span>
+          </div>
+          <div className="flex items-center justify-between text-[14px]">
+            <span className="text-muted-foreground">Version</span>
+            <span className="font-mono text-foreground/70">v3.4.1</span>
+          </div>
+          <div>
+            <div className="mb-1 flex items-center justify-between text-[14px]">
+              <span className="text-muted-foreground">Storage</span>
+              <span className="text-foreground/80">64%</span>
+            </div>
+            <div className="h-1.5 overflow-hidden rounded-full bg-foreground/5">
+              <div className="h-full w-[64%] rounded-full bg-linear-to-r from-primary to-accent" />
+            </div>
+          </div>
+          <div className="flex items-center gap-2 pt-1 text-[14px]">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
+            </span>
+            <span className="text-muted-foreground">All systems operational</span>
+          </div>
+        </div>
+      </SidebarFooter>
+    </Sidebar>
+  );
+}

@@ -1,0 +1,132 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { Download, Filter, Plus, Search, SlidersHorizontal, Pencil, Trash2, Eye } from "lucide-react";
+import { PageHeader } from "@/components/app/PageHeader";
+import { Surface } from "@/components/app/Surface";
+
+export const Route = createFileRoute("/_app/entities/representatives")({
+  head: () => ({
+    meta: [
+      { title: "Representatives — Data Automation Studio" },
+      { name: "description", content: "Contacts assigned to entities — profiles, access and credentials." },
+    ],
+  }),
+  component: RepsPage,
+});
+
+const rows = [
+  { name: "Khalid Al-Farsi", username: "EAD-KFarsi", entity: "EAD", role: "Technical", email: "khalid.alfarsi@example.com", phone: "+971 50 123 4567", dept: "—" },
+  { name: "Fatima Al-Zaabi", username: "ADDC-FZaabi", entity: "ADDC", role: "Business", email: "fatima.alzaabi@example.com", phone: "+971 50 765 4321", dept: "Data Management" },
+];
+
+
+function RepsPage() {
+  return (
+    <div className="space-y-6">
+      <PageHeader
+        title="Representatives"
+        description="Contacts assigned to entities — manage profiles, access and credentials"
+        actions={
+          <button className="inline-flex items-center gap-1.5 rounded-lg bg-linear-to-b from-success to-success/90 px-3 py-2 text-[15px] font-medium text-white shadow-[0_4px_16px_-4px_rgba(16,185,129,0.5),inset_0_1px_0_rgba(255,255,255,0.15)]">
+            <Plus className="h-3.5 w-3.5" /> Add Representative
+          </button>
+        }
+      />
+      <Surface padded={false}>
+        <div className="flex flex-col gap-3 border-b border-border/60 p-4 sm:flex-row sm:items-center">
+          <div className="relative flex-1">
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
+            <input
+              placeholder="Search name, username, email, entity, role…"
+              className="w-full rounded-lg border border-border/60 bg-foreground/[0.02] py-2 pl-9 pr-3 text-[16px] text-foreground placeholder:text-muted-foreground focus:border-accent/50 focus:outline-none"
+            />
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <button className="inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-card/60 px-3 py-2 text-[15px] text-foreground/80"><Filter className="h-3.5 w-3.5" /> All Entities</button>
+            <div className="flex overflow-hidden rounded-lg border border-border/60">
+              <button className="bg-primary/20 px-2.5 py-2 text-[15px] font-medium text-accent">All</button>
+              <button className="border-l border-border/60 px-2.5 py-2 text-[15px] text-foreground/80"><span className="inline-block h-1.5 w-1.5 rounded-full bg-success" /> Active <span className="text-muted-foreground">(2)</span></button>
+              <button className="border-l border-border/60 px-2.5 py-2 text-[15px] text-foreground/80"><span className="inline-block h-1.5 w-1.5 rounded-full bg-muted-foreground/60" /> Disabled <span className="text-muted-foreground">(0)</span></button>
+            </div>
+            <button className="inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-card/60 px-3 py-2 text-[15px] text-foreground/80"><SlidersHorizontal className="h-3.5 w-3.5" /> Columns</button>
+            <button className="inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-card/60 px-3 py-2 text-[15px] text-foreground/80"><Download className="h-3.5 w-3.5" /> Export all <span className="rounded-md bg-primary/20 px-1.5 text-[14px] text-accent">2</span></button>
+          </div>
+        </div>
+
+        <div className="scrollbar-thin overflow-x-auto">
+          <table className="w-full text-[16px]">
+            <thead>
+              <tr className="bg-foreground/[0.04] text-[12px] font-bold uppercase tracking-[0.14em] text-muted-foreground/70">
+                <th className="py-3 pl-4"><input type="checkbox" className="h-3.5 w-3.5 rounded border-foreground/20 bg-foreground/5" /></th>
+                <th className="py-3 pr-4 text-left">Full Name</th>
+                <th className="py-3 pr-4 text-left">Username</th>
+                <th className="py-3 pr-4 text-left">Entity</th>
+                <th className="py-3 pr-4 text-left">Role</th>
+                <th className="py-3 pr-4 text-left">Email</th>
+                <th className="py-3 pr-4 text-left">Phone</th>
+                <th className="py-3 pr-4 text-left">Department</th>
+                <th className="py-3 pr-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border/50">
+              {rows.map((r) => (
+                <tr key={r.username} className="group transition-colors hover:bg-foreground/[0.02]">
+                  <td className="py-3 pl-4"><input type="checkbox" className="h-3.5 w-3.5 rounded border-foreground/20 bg-foreground/5" /></td>
+                  <td className="py-3 pr-4">
+                    <div className="flex items-center gap-2.5">
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-primary/40 to-secondary-accent/40 text-[14px] font-semibold text-white ring-1 ring-inset ring-white/10 initials-avatar">
+                        {r.name.split(" ").map((p) => p[0]).slice(0, 2).join("")}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="whitespace-nowrap font-medium text-foreground">{r.name}</div>
+                        <div className="text-[14px] text-success">Active</div>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td className="py-3 pr-4 font-mono text-muted-foreground">{r.username}</td>
+                  <td className="py-3 pr-4"><span className="rounded-md bg-foreground/5 px-2 py-0.5 text-[15px] text-foreground/80 ring-1 ring-inset ring-foreground/10">{r.entity}</span></td>
+                  <td className="py-3 pr-4">
+                    <span className={`rounded-md px-2 py-0.5 text-[15px] ring-1 ring-inset ${r.role === "Technical" ? "bg-info/10 text-info ring-info/25" : "bg-secondary-accent/10 ring-secondary-accent/25 text-[color:var(--secondary-accent)]"}`}>
+                      {r.role}
+                    </span>
+                  </td>
+                  <td className="py-3 pr-4 text-muted-foreground">{r.email}</td>
+                  <td className="py-3 pr-4 font-mono text-muted-foreground">{r.phone}</td>
+                  <td className="py-3 pr-4 text-muted-foreground">{r.dept}</td>
+                  <td className="py-3 pr-4">
+                    <div className="flex justify-end gap-1 opacity-70 transition-opacity group-hover:opacity-100">
+                      <IconBtn label="View"><Eye className="h-3.5 w-3.5" /></IconBtn>
+                      <IconBtn label="Edit"><Pencil className="h-3.5 w-3.5" /></IconBtn>
+                      <IconBtn label="Delete" tone="danger"><Trash2 className="h-3.5 w-3.5" /></IconBtn>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="flex items-center justify-between border-t border-border/60 px-4 py-3 text-[15px] text-muted-foreground">
+          <span>Rows per page <span className="ml-2 rounded-md bg-foreground/5 px-2 py-0.5 text-foreground/80">10</span> · 2 active · 0 disabled</span>
+          <div className="flex items-center gap-1">
+            <button className="rounded-md px-2 py-1 hover:bg-foreground/5">Previous</button>
+            <button className="rounded-md bg-primary/20 px-2 py-1 font-medium text-accent">1</button>
+            <span>of 1</span>
+            <button className="rounded-md px-2 py-1 hover:bg-foreground/5">Next</button>
+          </div>
+        </div>
+      </Surface>
+    </div>
+  );
+}
+
+function IconBtn({ children, label, tone }: { children: React.ReactNode; label: string; tone?: "danger" }) {
+  return (
+    <button
+      aria-label={label}
+      className={`flex h-7 w-7 items-center justify-center rounded-md border border-foreground/10 bg-foreground/[0.03] ${tone === "danger" ? "text-danger hover:bg-danger/10 hover:border-danger/40" : "text-muted-foreground hover:text-foreground hover:border-accent/40 hover:bg-foreground/[0.06]"}`}
+    >
+      {children}
+    </button>
+  );
+}

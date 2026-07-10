@@ -1,0 +1,150 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { Download, Filter, Plus, Search, SlidersHorizontal, Pencil, Trash2, Eye } from "lucide-react";
+import { PageHeader } from "@/components/app/PageHeader";
+import { Surface } from "@/components/app/Surface";
+
+export const Route = createFileRoute("/_app/entities/entity")({
+  head: () => ({
+    meta: [
+      { title: "Entities — Data Automation Studio" },
+      { name: "description", content: "Manage enterprise entities and their onboarding status." },
+    ],
+  }),
+  component: EntitiesPage,
+});
+
+const rows = [
+  { name: "Abu Dhabi Digital Authority", code: "ADDA", type: "Semi-Government", date: "2026-04-25", sectors: ["Digital", "Technology"] },
+  { name: "Environment Agency Abu Dhabi", code: "EAD", type: "Government", date: "2026-04-25", sectors: ["Environment", "Climate"] },
+  { name: "Dept of Government Enablement", code: "DGE", type: "Semi-Government", date: "2026-04-26", sectors: ["Government", "Policy"] },
+  { name: "Abu Dhabi Distribution Company", code: "ADDC", type: "State-Owned", date: "—", sectors: ["Utilities", "Power Distribution"] },
+  { name: "Abu Dhabi Housing Authority", code: "ADHA", type: "Government", date: "2026-04-25", sectors: ["Housing", "Urban Development"] },
+];
+
+function codeTone(c: string) {
+  const map: Record<string, string> = {
+    ADDA: "bg-warning/15 text-warning ring-warning/25",
+    EAD: "bg-warning/15 text-warning ring-warning/25",
+    DGE: "bg-warning/15 text-warning ring-warning/25",
+    ADDC: "bg-danger/15 text-danger ring-danger/25",
+    ADHA: "bg-warning/15 text-warning ring-warning/25",
+  };
+  return map[c] ?? "bg-primary/15 text-accent ring-primary/25";
+}
+
+function EntitiesPage() {
+  return (
+    <div className="space-y-6">
+      <PageHeader
+        title="Entity"
+        description="Entity onboarding and management"
+        actions={
+          <button className="inline-flex items-center gap-1.5 rounded-lg bg-linear-to-b from-primary to-primary/90 px-3 py-2 text-[15px] font-medium text-white shadow-[0_4px_16px_-4px_rgba(37,99,235,0.5),inset_0_1px_0_rgba(255,255,255,0.15)]">
+            <Plus className="h-3.5 w-3.5" /> Add Entity
+          </button>
+        }
+      />
+      <Surface padded={false}>
+        <div className="flex flex-col gap-3 border-b border-border/60 p-4 sm:flex-row sm:items-center">
+          <div className="relative flex-1">
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
+            <input
+              placeholder="Search by name, code or sector…"
+              className="w-full rounded-lg border border-border/60 bg-foreground/[0.02] py-2 pl-9 pr-3 text-[16px] text-foreground placeholder:text-muted-foreground focus:border-accent/50 focus:outline-none"
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <button className="inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-card/60 px-3 py-2 text-[15px] text-foreground/80 hover:border-accent/40">
+              <Filter className="h-3.5 w-3.5" /> All Types
+            </button>
+            <button className="inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-card/60 px-3 py-2 text-[15px] text-foreground/80 hover:border-accent/40">
+              <SlidersHorizontal className="h-3.5 w-3.5" /> Columns
+            </button>
+            <button className="inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-card/60 px-3 py-2 text-[15px] text-foreground/80 hover:border-accent/40">
+              <Download className="h-3.5 w-3.5" /> Export{" "}
+              <span className="rounded-md bg-primary/20 px-1.5 text-[14px] text-accent">5</span>
+            </button>
+          </div>
+        </div>
+
+        <div className="scrollbar-thin overflow-x-auto">
+          <table className="w-full text-[16px]">
+            <thead>
+              <tr className="bg-foreground/[0.04] text-[12px] font-bold uppercase tracking-[0.14em] text-muted-foreground/70">
+                <th className="py-3 pl-4 text-left"><input type="checkbox" className="h-3.5 w-3.5 rounded border-foreground/20 bg-foreground/5" /></th>
+                <th className="py-3 pr-4 text-left">Entity Name</th>
+                <th className="py-3 pr-4 text-left">Entity Code</th>
+                <th className="py-3 pr-4 text-left">Entity Type</th>
+                <th className="py-3 pr-4 text-left">Onboarding Date</th>
+                <th className="py-3 pr-4 text-left">Sector</th>
+                <th className="py-3 pr-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border/50">
+              {rows.map((r) => (
+                <tr key={r.code} className="group transition-colors hover:bg-foreground/[0.02]">
+                  <td className="py-3 pl-4"><input type="checkbox" className="h-3.5 w-3.5 rounded border-foreground/20 bg-foreground/5" /></td>
+                  <td className="py-3 pr-4">
+                    <div className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-success shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
+                      <span className="whitespace-nowrap font-medium text-foreground">{r.name}</span>
+                    </div>
+                  </td>
+
+                  <td className="py-3 pr-4">
+                    <span className={`inline-flex rounded-md px-2 py-0.5 font-mono text-[15px] font-semibold ring-1 ring-inset ${codeTone(r.code)}`}>
+                      {r.code}
+                    </span>
+                  </td>
+                  <td className="py-3 pr-4">
+                    <span className="rounded-md bg-foreground/5 px-2 py-0.5 text-[15px] text-foreground/80 ring-1 ring-inset ring-foreground/10">
+                      {r.type}
+                    </span>
+                  </td>
+                  <td className="py-3 pr-4 font-mono text-muted-foreground">{r.date}</td>
+                  <td className="py-3 pr-4">
+                    <div className="flex flex-wrap gap-1.5">
+                      {r.sectors.map((s) => (
+                        <span key={s} className="rounded-md bg-primary/10 px-2 py-0.5 text-[15px] text-accent ring-1 ring-inset ring-primary/20">
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </td>
+                  <td className="py-3 pr-4">
+                    <div className="flex justify-end gap-1 opacity-70 transition-opacity group-hover:opacity-100">
+                      <IconBtn label="View"><Eye className="h-3.5 w-3.5" /></IconBtn>
+                      <IconBtn label="Edit"><Pencil className="h-3.5 w-3.5" /></IconBtn>
+                      <IconBtn label="Delete" tone="danger"><Trash2 className="h-3.5 w-3.5" /></IconBtn>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="flex items-center justify-between border-t border-border/60 px-4 py-3 text-[15px] text-muted-foreground">
+          <span>Rows per page <span className="ml-2 rounded-md bg-foreground/5 px-2 py-0.5 text-foreground/80">10</span></span>
+          <div className="flex items-center gap-1">
+            <button className="rounded-md px-2 py-1 hover:bg-foreground/5">Previous</button>
+            <button className="rounded-md bg-primary/20 px-2 py-1 font-medium text-accent">1</button>
+            <span>of 1</span>
+            <button className="rounded-md px-2 py-1 hover:bg-foreground/5">Next</button>
+          </div>
+        </div>
+      </Surface>
+    </div>
+  );
+}
+
+function IconBtn({ children, label, tone }: { children: React.ReactNode; label: string; tone?: "danger" }) {
+  return (
+    <button
+      aria-label={label}
+      className={`flex h-7 w-7 items-center justify-center rounded-md border border-foreground/10 bg-foreground/[0.03] transition-colors ${tone === "danger" ? "text-danger hover:bg-danger/10 hover:border-danger/40" : "text-muted-foreground hover:text-foreground hover:border-accent/40 hover:bg-foreground/[0.06]"}`}
+    >
+      {children}
+    </button>
+  );
+}
