@@ -121,12 +121,8 @@ function RepsPage() {
                   </td>
 
                   <td className="py-3 pr-4 font-mono text-muted-foreground">{r.username}</td>
-                  <td className="py-3 pr-4"><span className="rounded-md bg-foreground/5 px-2 py-0.5 text-[15px] text-foreground/80 ring-1 ring-inset ring-foreground/10">{r.entity}</span></td>
-                  <td className="py-3 pr-4">
-                    <span className={`rounded-md px-2 py-0.5 text-[15px] ring-1 ring-inset ${r.role === "Technical" ? "bg-info/10 text-info ring-info/25" : "bg-secondary-accent/10 ring-secondary-accent/25 text-[color:var(--secondary-accent)]"}`}>
-                      {r.role}
-                    </span>
-                  </td>
+                  <td className="py-3 pr-4 font-mono text-[15px] text-foreground/80">{r.entity}</td>
+                  <td className="py-3 pr-4 text-[15px] text-foreground/80">{r.role}</td>
                   <td className="py-3 pr-4 text-muted-foreground">{r.email}</td>
                   <td className="py-3 pr-4 font-mono text-muted-foreground">{r.phone}</td>
                   <td className="py-3 pr-4 text-muted-foreground">{r.dept}</td>

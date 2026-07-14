@@ -125,21 +125,17 @@ function EntitiesPage() {
                     </div>
                   </td>
 
-                  <td className="py-3 pr-4">
-                    <span className={`inline-flex rounded-md px-2 py-0.5 font-mono text-[15px] font-semibold ring-1 ring-inset ${codeTone(r.code)}`}>
-                      {r.code}
-                    </span>
+                  <td className="py-3 pr-4 font-mono text-[15px] font-semibold text-foreground/90">
+                    {r.code}
                   </td>
-                  <td className="py-3 pr-4">
-                    <span className="rounded-md bg-foreground/5 px-2 py-0.5 text-[15px] text-foreground/80 ring-1 ring-inset ring-foreground/10">
-                      {r.type}
-                    </span>
+                  <td className="py-3 pr-4 text-[15px] text-foreground/80">
+                    {r.type}
                   </td>
                   <td className="py-3 pr-4 font-mono text-muted-foreground">{r.date}</td>
                   <td className="py-3 pr-4">
                     <div className="flex flex-wrap gap-1.5">
                       {r.sectors.map((s) => (
-                        <span key={s} className="rounded-md bg-primary/10 px-2 py-0.5 text-[15px] text-accent ring-1 ring-inset ring-primary/20">
+                        <span key={s} className="rounded-md bg-foreground/5 px-2 py-0.5 text-[15px] text-foreground ring-1 ring-inset ring-foreground/10">
                           {s}
                         </span>
                       ))}

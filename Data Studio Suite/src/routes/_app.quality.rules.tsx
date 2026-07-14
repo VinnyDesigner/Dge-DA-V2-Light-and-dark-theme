@@ -10,6 +10,7 @@ import {
   Mail,
   Compass,
   Wrench,
+  ChevronDown,
 } from "lucide-react";
 import { PageHeader } from "@/components/app/PageHeader";
 import { Surface } from "@/components/app/Surface";
@@ -53,6 +54,7 @@ type Rule = {
 };
 
 type TabKey =
+  | "all"
   | "base"
   | "attribute"
   | "spatial"
@@ -130,8 +132,18 @@ const STANDARDIZATION_RULES: Rule[] = [
   { id: "RULE_50", name: "Add Clearinghouse FID", description: "Adds the CH_FID field to every layer in the GDB. Assigns sequential integer values starting from 1. This is the ADSDI mandatory tracking field that uniquely identifies each feature in the clearinghouse.", appliesTo: "ALL", category: "Standardization", severity: "info", enabled: true, status: "Existing" },
 ];
 
+const ALL_RULES: Rule[] = [
+  ...BASE_RULES,
+  ...ATTRIBUTE_RULES,
+  ...SPATIAL_RULES,
+  ...CONSISTENCY_RULES,
+  ...TRANSFORMATION_RULES,
+  ...STANDARDIZATION_RULES,
+];
+
 const TABS: { key: TabKey; label: string; icon: React.ComponentType<{ className?: string }>; data: Rule[] }[] = [
-  { key: "base", label: "Base Rules", icon: Search, data: BASE_RULES },
+  { key: "all", label: "All Rules", icon: Filter, data: ALL_RULES },
+  { key: "base", label: "Default Rules", icon: Search, data: BASE_RULES },
   { key: "attribute", label: "Attribute Rules", icon: Mail, data: ATTRIBUTE_RULES },
   { key: "spatial", label: "Spatial Rules", icon: Compass, data: SPATIAL_RULES },
   { key: "consistency", label: "Data Consistency Rules", icon: Filter, data: CONSISTENCY_RULES },
@@ -191,11 +203,12 @@ function KpiCard({
 }
 
 function QualityRulesPage() {
-  const [activeTab, setActiveTab] = useState<TabKey>("base");
+  const [activeTab, setActiveTab] = useState<TabKey>("all");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All Categories");
   const [severity, setSeverity] = useState("All Severities");
   const [status, setStatus] = useState("All Statuses");
+  const [ruleDropdownOpen, setRuleDropdownOpen] = useState(false);
   const [rulesByTab, setRulesByTab] = useState<Record<TabKey, Rule[]>>(() =>
     Object.fromEntries(TABS.map((t) => [t.key, t.data])) as Record<TabKey, Rule[]>,
   );
@@ -274,41 +287,7 @@ function QualityRulesPage() {
         <KpiCard label="Disabled" value={totals.disabled} tone="muted" />
       </div>
 
-      {/* Tabs + search + filters */}
       <Surface className="!p-0">
-        {/* Tabs */}
-        <div className="flex flex-wrap gap-1 border-b border-border/60 px-3 pt-3">
-          {TABS.map((t) => {
-            const active = activeTab === t.key;
-            const count = rulesByTab[t.key].length;
-            return (
-              <button
-                key={t.key}
-                onClick={() => setActiveTab(t.key)}
-                className={cn(
-                  "inline-flex items-center gap-2 rounded-t-lg border-b-2 px-4 py-2.5 text-[14px] font-medium transition",
-                  active
-                    ? "border-accent text-accent"
-                    : "border-transparent text-muted-foreground hover:text-foreground",
-                )}
-              >
-                <t.icon className="h-4 w-4" />
-                <span>{t.label}</span>
-                <span
-                  className={cn(
-                    "ml-1 inline-flex h-5 min-w-[22px] items-center justify-center rounded-full px-1.5 text-[11px] font-semibold",
-                    active
-                      ? "bg-accent/15 text-accent ring-1 ring-inset ring-accent/25"
-                      : "bg-foreground/10 text-muted-foreground",
-                  )}
-                >
-                  {count}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
         {/* Search + filters row */}
         <div className="flex flex-wrap items-center gap-3 border-b border-border/60 p-4">
           <div className="relative min-w-[240px] flex-1">
@@ -321,6 +300,43 @@ function QualityRulesPage() {
               className="h-10 w-full rounded-lg border border-border/60 bg-card/50 pl-10 pr-3 text-[14px] text-foreground placeholder:text-muted-foreground focus:border-accent/50 focus:outline-none"
             />
           </div>
+
+          {/* Rules dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => setRuleDropdownOpen(!ruleDropdownOpen)}
+              className={cn(
+                "inline-flex h-10 items-center gap-2 rounded-lg border px-3 text-[14px] font-medium transition",
+                activeTab !== "all"
+                  ? "border-accent/40 bg-accent/10 text-accent"
+                  : "border-border/60 bg-card/50 text-foreground",
+              )}
+            >
+              {TABS.find((t) => t.key === activeTab)?.label} ({rules.length})
+              <ChevronDown className={cn("h-4 w-4 transition-transform", ruleDropdownOpen && "rotate-180")} />
+            </button>
+            {ruleDropdownOpen && (
+              <>
+                <div className="fixed inset-0 z-40" onClick={() => setRuleDropdownOpen(false)} />
+                <div className="absolute left-0 top-full z-50 mt-1 min-w-[220px] overflow-hidden rounded-lg border border-border/60 bg-card shadow-lg">
+                  {TABS.map((t) => (
+                    <button
+                      key={t.key}
+                      onClick={() => { setActiveTab(t.key); setRuleDropdownOpen(false); }}
+                      className={cn(
+                        "flex w-full items-center justify-between gap-4 px-4 py-2.5 text-left text-[14px] transition hover:bg-foreground/5",
+                        activeTab === t.key ? "text-accent font-medium" : "text-foreground/80",
+                      )}
+                    >
+                      <span>{t.label} ({rulesByTab[t.key].length})</span>
+                      {activeTab === t.key && <span className="text-accent">✓</span>}
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+
           <FilterSelect
             value={category}
             onChange={setCategory}
@@ -471,6 +487,7 @@ function FilterSelect({
           <option key={o}>{o}</option>
         ))}
       </select>
+      <ChevronDown className="pointer-events-none absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
     </div>
   );
 }
