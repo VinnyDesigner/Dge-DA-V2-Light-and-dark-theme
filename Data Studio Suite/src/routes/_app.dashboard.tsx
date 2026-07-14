@@ -162,13 +162,15 @@ function Dashboard() {
           </>
         )}
 
-        <div className="relative flex flex-col gap-3 py-3 px-6">
-          <div className="flex flex-col gap-3 xl:flex-row xl:items-start xl:justify-between">
+        <div className="relative flex flex-col gap-2 py-2 px-5">
+          <div className="flex flex-col gap-2 xl:flex-row xl:items-start xl:justify-between">
             <div className="min-w-0 flex-1">
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-success/10 px-2 py-0.5 text-[12px] font-medium text-success ring-1 ring-inset ring-success/25">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-success" /> SYSTEM OPERATIONAL
+              <div className="flex flex-wrap items-start gap-3">
+                <h1 className="break-words text-xl font-bold tracking-tight text-foreground sm:text-2xl lg:text-3xl">Data Automation Studio</h1>
+                <div className="mt-1.5 inline-flex items-center gap-1.5 rounded-full bg-success/10 px-2 py-0.5 text-[12px] font-medium text-success ring-1 ring-inset ring-success/25">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-success" /> SYSTEM OPERATIONAL
+                </div>
               </div>
-              <h1 className="mt-1 break-words text-xl font-bold tracking-tight text-foreground sm:text-2xl lg:text-3xl">Data Automation Studio</h1>
               <p className="mt-0.5 text-[13px] font-medium text-foreground/50 lg:text-[14px]">Jul 9, 2026 · Platform overview &amp; live health</p>
             </div>
 
@@ -196,7 +198,7 @@ function Dashboard() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:gap-6">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-4 lg:gap-5">
             <InlineMetric label="Records today" value="2.4M" hint="↑ 12.3%" hintTone="success" />
             <InlineMetric label="Composite success" value="94.8%" hint="Composite" />
             <InlineMetric label="Avg cycle time" value="42m" hint="Per workflow" />
