@@ -302,7 +302,7 @@ const HUB_NODES = [
   { Icon: FileText, angle: -30, label: "Metadata" },
   { Icon: Code2, angle: 30, label: "Data Quality" },
   { Icon: Workflow, angle: 90, label: "Orchestration" },
-  { Icon: ArrowLeftRight, angle: 150, label: "ETL / Sync" },
+  { Icon: ArrowLeftRight, angle: 150, label: "ETL" },
   { Icon: Shield, angle: 210, label: "Governance" },
 ];
 
