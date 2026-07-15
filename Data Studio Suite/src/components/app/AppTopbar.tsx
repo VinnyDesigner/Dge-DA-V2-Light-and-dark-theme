@@ -77,13 +77,13 @@ export function AppTopbar() {
           {/* Responsive Wide Search bar, visible only on lg and above */}
           <button
             type="button"
-            className="group hidden h-8 w-full max-w-[200px] items-center gap-2 rounded-lg border border-border/60 bg-card/50 px-2.5 text-[13.5px] text-muted-foreground transition-colors hover:border-accent/40 hover:bg-card lg:flex"
+            className="group hidden h-8 w-[200px] items-center gap-2 rounded-lg border border-border/60 bg-card/50 px-2.5 text-[13.5px] text-muted-foreground transition-colors hover:border-accent/40 hover:bg-card lg:flex"
           >
             <Search className="h-3.5 w-3.5 shrink-0" />
             <span className="truncate text-left flex items-center gap-1">
               Search
               <span
-                className={`transition-all duration-300 transform inline-block font-medium text-accent ${
+                className={`transition-all duration-300 transform inline-block font-medium text-accent w-[70px] text-left ${
                   fadeState === "fade-in"
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 -translate-y-1"
@@ -114,7 +114,7 @@ export function AppTopbar() {
               <span className="truncate text-left flex items-center gap-1">
                 Search
                 <span
-                  className={`transition-all duration-300 transform inline-block font-medium text-accent ${
+                  className={`transition-all duration-300 transform inline-block font-medium text-accent w-[70px] text-left ${
                     fadeState === "fade-in"
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 -translate-y-1"
