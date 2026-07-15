@@ -101,24 +101,24 @@ function EntitiesPage() {
           </div>
         </div>
 
-        <div className="scrollbar-thin overflow-x-auto">
+        <div className="table-container-scrollable scrollbar-thin">
           <table className="w-full text-[16px]">
             <thead>
               <tr className="bg-foreground/[0.04] text-[12px] font-bold tracking-wide text-muted-foreground/70">
-                <th className="py-3 pl-4 text-left"><input type="checkbox" className="h-3.5 w-3.5 rounded border-foreground/20 bg-foreground/5" /></th>
-                <th className="py-3 pr-4 text-left">Entity Name</th>
+                <th className="py-3 pl-4 text-left table-sticky-col-1"><input type="checkbox" className="h-3.5 w-3.5 rounded border-foreground/20 bg-foreground/5" /></th>
+                <th className="py-3 pr-4 text-left table-sticky-col-2">Entity Name</th>
                 <th className="py-3 pr-4 text-left">Entity Code</th>
                 <th className="py-3 pr-4 text-left">Entity Type</th>
                 <th className="py-3 pr-4 text-left">Onboarding Date</th>
                 <th className="py-3 pr-4 text-left">Sector</th>
-                <th className="py-3 pr-4 text-right">Actions</th>
+                <th className="py-3 pr-4 text-right table-sticky-actions">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border/50">
               {paginatedRows.map((r) => (
                 <tr key={r.code} className="group transition-colors hover:bg-foreground/[0.02]">
-                  <td className="py-3 pl-4"><input type="checkbox" className="h-3.5 w-3.5 rounded border-foreground/20 bg-foreground/5" /></td>
-                  <td className="py-3 pr-4">
+                  <td className="py-3 pl-4 table-sticky-col-1"><input type="checkbox" className="h-3.5 w-3.5 rounded border-foreground/20 bg-foreground/5" /></td>
+                  <td className="py-3 pr-4 table-sticky-col-2">
                     <div className="flex items-center gap-2">
                       <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-success shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
                       <span className="whitespace-nowrap font-medium text-foreground">{r.name}</span>
@@ -141,7 +141,7 @@ function EntitiesPage() {
                       ))}
                     </div>
                   </td>
-                  <td className="py-3 pr-4">
+                  <td className="py-3 pr-4 table-sticky-actions">
                     <div className="flex justify-end gap-1 opacity-70 transition-opacity group-hover:opacity-100">
                       <IconBtn label="View"><Eye className="h-3.5 w-3.5" /></IconBtn>
                       <IconBtn label="Edit"><Pencil className="h-3.5 w-3.5" /></IconBtn>

@@ -144,11 +144,11 @@ function JobsPage() {
       </Surface>
 
       <Surface className="!p-0">
-        <div className="overflow-x-auto">
+        <div className="table-container-scrollable scrollbar-thin">
           <table className="w-full text-left text-[14px]">
             <thead>
               <tr className="border-b border-border/60 bg-foreground/[0.04] text-[12px] font-bold tracking-wide text-muted-foreground/70">
-                <Th>Delivery</Th>
+                <Th className="table-sticky-single-left">Delivery</Th>
                 <Th>Flow Type</Th>
                 <Th>Entity</Th>
                 <Th>Layers</Th>
@@ -156,13 +156,13 @@ function JobsPage() {
                 <Th>Status</Th>
                 <Th>Progress</Th>
                 <Th>Submitted</Th>
-                <Th>Actions</Th>
+                <Th className="table-sticky-actions">Actions</Th>
               </tr>
             </thead>
             <tbody>
               {paginatedJobs.map((j) => (
                 <tr key={j.delivery} className="border-b border-border/40 last:border-0 hover:bg-foreground/[0.02]">
-                  <Td>
+                  <Td className="table-sticky-single-left">
                     <div className="flex items-center gap-3">
                       <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/15 text-accent ring-1 ring-inset ring-accent/25">
                         <Briefcase className="h-4 w-4" />
@@ -231,7 +231,7 @@ function JobsPage() {
                   <Td>
                     <span className="font-mono text-[16px] text-foreground/80">{j.submitted}</span>
                   </Td>
-                  <Td>
+                  <Td className="table-sticky-actions">
                     <div className="flex items-center gap-1">
                       <IconBtn tone="info"><GitBranch className="h-4 w-4" /></IconBtn>
                       <IconBtn tone="success"><Activity className="h-4 w-4" /></IconBtn>
@@ -258,11 +258,11 @@ function JobsPage() {
   );
 }
 
-function Th({ children }: { children: React.ReactNode }) {
-  return <th className="px-5 py-3 text-left">{children}</th>;
+function Th({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <th className={cn("px-5 py-3 text-left", className)}>{children}</th>;
 }
-function Td({ children }: { children: React.ReactNode }) {
-  return <td className="px-5 py-4 align-middle">{children}</td>;
+function Td({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <td className={cn("px-5 py-4 align-middle", className)}>{children}</td>;
 }
 function IconBtn({ children, tone }: { children: React.ReactNode; tone: string }) {
   return (

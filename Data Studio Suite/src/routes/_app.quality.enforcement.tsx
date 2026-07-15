@@ -243,13 +243,13 @@ function RuleEnforcementPage() {
         </div>
 
         {/* Table list view */}
-        <div className="overflow-x-auto">
+        <div className="table-container-scrollable scrollbar-thin">
           <table className="w-full text-left text-[14px]">
             <thead>
               <tr className="border-b border-border/60 bg-foreground/[0.04] text-[12px] font-bold tracking-wide text-muted-foreground/70 uppercase">
-                <th className="px-5 py-3.5 w-1/3">Rule</th>
+                <th className="px-5 py-3.5 w-1/3 table-sticky-single-left">Rule</th>
                 <th className="px-5 py-3.5 w-[140px] text-center">Catalog Default</th>
-                <th className="px-5 py-3.5 text-left">Enforcement (This Entity)</th>
+                <th className="px-5 py-3.5 text-left table-sticky-actions">Enforcement (This Entity)</th>
               </tr>
             </thead>
             <tbody>
@@ -262,7 +262,7 @@ function RuleEnforcementPage() {
                     key={r.id}
                     className="border-b border-border/40 last:border-0 hover:bg-foreground/[0.02] transition-colors"
                   >
-                    <td className="px-5 py-4.5 align-top">
+                    <td className="px-5 py-4.5 align-top table-sticky-single-left">
                       <div className="font-semibold text-foreground text-[15px]">{r.name}</div>
                       <div className="mt-1 font-mono text-[11px] text-muted-foreground/80 tracking-wide">
                         {r.id} · <span className="font-semibold text-accent/90">{r.category}</span>
@@ -280,7 +280,7 @@ function RuleEnforcementPage() {
                       </span>
                     </td>
 
-                    <td className="px-5 py-4.5 align-top">
+                    <td className="px-5 py-4.5 align-top table-sticky-actions">
                       <div className="flex items-center justify-between gap-4">
                         {/* Custom Radios */}
                         <div className="flex items-center gap-6">

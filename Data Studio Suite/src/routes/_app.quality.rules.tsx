@@ -359,19 +359,19 @@ function QualityRulesPage() {
         </div>
 
         {/* Table */}
-        <div className="overflow-x-auto">
+        <div className="table-container-scrollable scrollbar-thin">
           <table className="w-full text-left text-[14px]">
             <thead>
               <tr className="border-b border-border/60 bg-foreground/[0.04] text-[12px] font-bold tracking-wide text-muted-foreground/80">
-                <Th className="w-10">
+                <Th className="w-10 table-sticky-col-1">
                   <input type="checkbox" className="rounded border-border/60 bg-transparent" />
                 </Th>
-                <Th>Rule Name</Th>
+                <Th className="table-sticky-col-2">Rule Name</Th>
                 <Th>Description</Th>
                 <Th>Applies To</Th>
                 <Th>Category</Th>
                 <Th>Severity</Th>
-                <Th className="text-right pr-6">Actions</Th>
+                <Th className="text-right pr-6 table-sticky-actions">Actions</Th>
               </tr>
             </thead>
             <tbody>
@@ -380,10 +380,10 @@ function QualityRulesPage() {
                   key={r.id}
                   className="border-b border-border/40 last:border-0 hover:bg-foreground/[0.02]"
                 >
-                  <Td>
+                  <Td className="table-sticky-col-1">
                     <input type="checkbox" className="rounded border-border/60 bg-transparent" />
                   </Td>
-                  <Td>
+                  <Td className="table-sticky-col-2">
                     <div className="font-semibold text-foreground">{r.name}</div>
                     <div className="mt-0.5 font-mono text-[11px] text-muted-foreground">
                       {r.id}
@@ -418,7 +418,7 @@ function QualityRulesPage() {
                       {r.severity}
                     </span>
                   </Td>
-                  <Td className="pr-6">
+                  <Td className="pr-6 table-sticky-actions">
                     <div className="flex items-center justify-end gap-1.5">
                       <IconBtn tone="info" label="View">
                         <Eye className="h-4 w-4" />

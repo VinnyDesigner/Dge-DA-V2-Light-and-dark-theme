@@ -20,6 +20,7 @@ import {
   Layers,
   LineChart,
   Shield,
+  Server,
 } from "lucide-react";
 
 export const Route = createFileRoute("/login")({
@@ -65,7 +66,7 @@ function Login() {
       <AmbientBackdrop />
 
       {/* Centered container — tighter gutters */}
-      <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-none flex-col px-5 sm:px-6 md:px-8 lg:px-16 xl:px-24 2xl:px-32">
+      <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-none flex-col login-container-strict">
 
         {/* Top logo bar */}
         <motion.header
@@ -77,29 +78,27 @@ function Login() {
           <img
             src="/DGE White.png"
             alt="Department of Government Enablement"
-            className="h-8 w-auto shrink-0 object-contain opacity-95 sm:h-10 lg:h-11"
+            className="h-8 w-auto shrink-0 object-contain opacity-95 sm:h-10 lg:h-11 xl:h-13 2xl:h-15"
           />
           <img
             src="/SDI White.png"
             alt="Abu Dhabi Spatial Data"
-            className="h-10 w-auto shrink-0 object-contain opacity-90 sm:h-14 lg:h-16"
+            className="h-10 w-auto shrink-0 object-contain opacity-90 sm:h-14 lg:h-17 xl:h-20 2xl:h-24"
           />
         </motion.header>
 
         {/* Body */}
-        <div className="grid flex-1 grid-cols-1 items-center justify-items-center gap-8 py-4 lg:grid-cols-3 lg:gap-16 xl:gap-24 2xl:gap-36 lg:justify-items-stretch">
+        <div className="grid flex-1 grid-cols-1 items-center justify-items-center gap-8 py-4 lg:grid-cols-[1fr_auto_1fr] lg:gap-8 xl:gap-12 2xl:gap-16 lg:justify-items-stretch login-body-grid">
 
           {/* -------------------- LEFT / Hero copy -------------------- */}
-          <div className="relative order-1 flex flex-col items-start text-left max-w-[500px] lg:max-w-none xl:max-w-[540px] 2xl:max-w-[620px]">
+          <div className="relative order-1 flex flex-col items-start text-left w-full max-w-[500px] lg:max-w-[480px] xl:max-w-[600px] 2xl:max-w-[740px] login-hero-wrapper">
             <motion.div
               initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.8 }}
-              className="text-[34px] font-bold leading-[1.02] tracking-[-0.02em] text-foreground sm:text-[42px] lg:text-[46px] xl:text-[54px]"
+              className="text-[24px] min-[400px]:text-[28px] sm:text-[34px] md:text-[38px] lg:text-[28px] xl:text-[42px] 2xl:text-[56px] font-bold leading-[1.02] tracking-[-0.02em] text-foreground login-hero-heading"
             >
-              Data Automation
-              <br />
-              Studio
+              Data Automation<span className="lg:inline hidden"> </span><br className="lg:hidden" />Studio
             </motion.div>
 
             <motion.div
@@ -119,7 +118,7 @@ function Login() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.15 }}
-              className="mt-5 text-[24px] font-bold leading-[1.1] tracking-[-0.02em] sm:text-[28px] lg:text-[30px] xl:text-[36px]"
+              className="mt-5 text-[18px] min-[400px]:text-[20px] sm:text-[24px] md:text-[28px] lg:text-[20px] xl:text-[28px] 2xl:text-[36px] font-bold leading-[1.1] tracking-[-0.02em] login-hero-subheading"
             >
               <span className="text-primary">Automate,</span>{" "}
               <span className="text-success">Monitor,</span>{" "}
@@ -132,7 +131,7 @@ function Login() {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25 }}
-              className="mt-5 max-w-[500px] text-[14px] leading-[1.75] text-muted-foreground sm:text-[15px]"
+              className="mt-5 max-w-[500px] text-[12px] sm:text-[13.5px] lg:text-[13px] xl:text-[15px] 2xl:text-[17px] leading-[1.75] text-muted-foreground login-hero-paragraph"
             >
               A secure command center for government-grade data workflows —
               orchestrating validation, transformation, metadata and quality
@@ -140,10 +139,12 @@ function Login() {
             </motion.p>
           </div>
 
-          {/* -------------------- MIDDLE / Circular Hub Animation -------------------- */}
           <div className="relative order-2 flex items-center justify-center py-6 lg:py-0">
-            <div className="hidden sm:block">
+            <div className="hidden xl:block">
               <CircularHub />
+            </div>
+            <div className="hidden sm:block xl:hidden">
+              <CircularHub compact />
             </div>
             <div className="sm:hidden">
               <CircularHub compact />
@@ -158,10 +159,10 @@ function Login() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               onSubmit={handleSubmit}
-              className="relative w-full max-w-[460px]"
+              className="relative w-full max-w-[460px] login-card-form"
             >
               {/* Card */}
-              <div className="glass-strong relative overflow-hidden rounded-[24px] px-6 py-8 shadow-[var(--shadow-elevated)] sm:rounded-[28px] sm:px-8 sm:py-10">
+              <div className="glass-strong relative overflow-hidden rounded-[24px] px-6 py-8 shadow-[var(--shadow-elevated)] sm:rounded-[28px] sm:px-8 sm:py-10 login-card-container">
                 <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-primary/[0.08] to-transparent" />
                 <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-primary/20 blur-3xl" />
                 <div className="pointer-events-none absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-info/10 blur-3xl" />
@@ -242,7 +243,7 @@ function Login() {
                       disabled={loading !== "idle"}
                       whileHover={loading === "idle" ? { y: -1 } : undefined}
                       whileTap={loading === "idle" ? { y: 0, scale: 0.99 } : undefined}
-                      className="group relative mt-4 inline-flex h-[54px] w-full items-center justify-center gap-2.5 overflow-hidden rounded-full bg-primary text-[15px] font-semibold tracking-tight text-primary-foreground shadow-[0_12px_40px_-12px_rgba(59,130,246,0.55)] transition-all disabled:opacity-95"
+                      className="group relative mt-4 inline-flex h-[54px] w-full items-center justify-center gap-2.5 overflow-hidden rounded-full bg-primary text-[15px] font-semibold tracking-tight text-primary-foreground shadow-[0_12px_40px_-12px_rgba(59,130,246,0.55)] transition-all disabled:opacity-95 login-cta-button"
                     >
                       <span className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-b from-white/20 via-transparent to-transparent" />
                       <span className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/20" />
@@ -276,7 +277,7 @@ function Login() {
               </div>
 
               {/* Under card meta */}
-              <div className="mt-5 flex items-center justify-between px-2 text-[11.5px] text-muted-foreground">
+              <div className="mt-5 flex items-center justify-between px-2 text-[11.5px] text-muted-foreground login-under-card-meta">
                 <span className="inline-flex items-center gap-1.5">
                   <Fingerprint className="h-3.5 w-3.5 text-success" />
                   End-to-end encrypted session
@@ -298,9 +299,9 @@ function Login() {
 /* ------------------------------------------------------------------ */
 
 const HUB_NODES = [
-  { Icon: Database, angle: -90, label: "Data Sources" },
+  { Icon: Server, angle: -90, label: "Data Sources" },
   { Icon: FileText, angle: -30, label: "Metadata" },
-  { Icon: Code2, angle: 30, label: "Data Quality" },
+  { Icon: ShieldCheck, angle: 30, label: "Data Quality" },
   { Icon: Workflow, angle: 90, label: "Orchestration" },
   { Icon: ArrowLeftRight, angle: 150, label: "ETL" },
   { Icon: Shield, angle: 210, label: "Governance" },
@@ -313,7 +314,7 @@ function CircularHub({ compact = false }: { compact?: boolean }) {
 
   return (
     <div
-      className="relative pointer-events-auto transition-transform duration-300 xl:scale-110 2xl:scale-125"
+      className="relative pointer-events-auto transition-transform duration-300 xl:scale-110 2xl:scale-125 login-workflow-hub"
       style={{ width: size, height: size }}
     >
       {/* Concentric mesh rings */}
@@ -370,6 +371,18 @@ function CircularHub({ compact = false }: { compact?: boolean }) {
           className="absolute inset-0 rounded-full border-2 border-info/35"
         />
         <Database className={compact ? "h-5 w-5 animate-pulse" : "h-6 w-6 animate-pulse"} />
+      </div>
+
+      {/* Center Hub Label */}
+      <div
+        className="absolute left-1/2 -translate-x-1/2 text-center pointer-events-none"
+        style={{
+          top: `calc(50% + ${compact ? "32px" : "38px"})`,
+        }}
+      >
+        <span className="text-[9px] sm:text-[10px] font-semibold tracking-wider uppercase text-info bg-info/10 backdrop-blur-md px-2 py-0.5 rounded border border-info/20 shadow-[0_0_12px_rgba(6,182,212,0.15)] whitespace-nowrap">
+          Enterprise Database
+        </span>
       </div>
 
       {/* Nodes */}
@@ -501,7 +514,7 @@ function FloatingField({
         {label}
       </label>
       <div
-        className={`group relative flex h-[54px] items-center gap-3 overflow-hidden rounded-full border px-5 pl-5 transition-all duration-300 ${
+        className={`group relative flex h-[54px] items-center gap-3 overflow-hidden rounded-full border px-5 pl-5 transition-all duration-300 login-input-field ${
           focused
             ? "border-primary/60 bg-white/[0.07]"
             : "border-white/[0.10] bg-white/[0.04] hover:border-white/[0.18]"

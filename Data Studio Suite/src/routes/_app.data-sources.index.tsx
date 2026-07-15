@@ -52,17 +52,17 @@ function DataSources() {
           <span className="text-[15px] text-muted-foreground">0 sources</span>
         </div>
 
-        <div className="scrollbar-thin overflow-x-auto">
+        <div className="table-container-scrollable scrollbar-thin">
           <table className="w-full text-[16px]">
             <thead>
               <tr className="bg-foreground/[0.04] text-[12px] font-bold tracking-wide text-muted-foreground/70">
-                <th className="py-3 pl-4"><input type="checkbox" className="h-3.5 w-3.5 rounded border-foreground/20 bg-foreground/5" /></th>
-                <th className="py-3 pr-4 text-left">Source</th>
+                <th className="py-3 pl-4 table-sticky-col-1"><input type="checkbox" className="h-3.5 w-3.5 rounded border-foreground/20 bg-foreground/5" /></th>
+                <th className="py-3 pr-4 text-left table-sticky-col-2">Source</th>
                 <th className="py-3 pr-4 text-left">Entity</th>
                 <th className="py-3 pr-4 text-left">Type</th>
                 <th className="py-3 pr-4 text-left">Layers</th>
                 <th className="py-3 pr-4 text-left">Last Sync</th>
-                <th className="py-3 pr-4 text-right">Actions</th>
+                <th className="py-3 pr-4 text-right table-sticky-actions">Actions</th>
               </tr>
             </thead>
           </table>

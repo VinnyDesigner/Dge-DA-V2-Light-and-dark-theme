@@ -170,12 +170,12 @@ function ManageSchedulesPage() {
           </div>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="table-container-scrollable scrollbar-thin">
           <table className="w-full text-left text-[14px]">
             <thead>
               <tr className="border-b border-border/60 bg-foreground/[0.04] text-[12px] font-bold tracking-wide text-muted-foreground/70">
-                <th className="px-5 py-3"><input type="checkbox" className="rounded border-border/60 bg-card/60 accent-accent" /></th>
-                <SortTh>Scheduler Name</SortTh>
+                <th className="px-5 py-3 table-sticky-col-1"><input type="checkbox" className="rounded border-border/60 bg-card/60 accent-accent" /></th>
+                <SortTh className="table-sticky-col-2-wide">Scheduler Name</SortTh>
                 <SortTh>Entity</SortTh>
                 <SortTh>Data Source</SortTh>
                 <SortTh>Connector</SortTh>
@@ -185,14 +185,14 @@ function ManageSchedulesPage() {
                 <SortTh>Last Run</SortTh>
                 <th className="px-5 py-3 whitespace-nowrap">Next Run</th>
                 <SortTh>Runs</SortTh>
-                <th className="px-5 py-3 whitespace-nowrap">Actions</th>
+                <th className="px-5 py-3 whitespace-nowrap table-sticky-actions">Actions</th>
               </tr>
             </thead>
             <tbody>
               {paginatedSchedules.map((s) => (
                 <tr key={s.name} className="border-b border-border/40 last:border-0 hover:bg-foreground/[0.02]">
-                  <td className="px-5 py-4"><input type="checkbox" className="rounded border-border/60 bg-card/60 accent-accent" /></td>
-                  <td className="px-5 py-4">
+                  <td className="px-5 py-4 table-sticky-col-1"><input type="checkbox" className="rounded border-border/60 bg-card/60 accent-accent" /></td>
+                  <td className="px-5 py-4 table-sticky-col-2-wide">
                     <div className="font-semibold text-foreground">{s.name}</div>
                     <span className="mt-1 inline-flex items-center gap-1 rounded-md bg-warning/15 px-1.5 py-0.5 text-[15px] font-medium text-warning ring-1 ring-inset ring-warning/25">{s.priority}</span>
                   </td>
@@ -213,7 +213,7 @@ function ManageSchedulesPage() {
                   </td>
                   <td className="px-5 py-4 font-mono text-[16px] text-foreground/80">{s.nextRun}</td>
                   <td className="px-5 py-4 text-[16px] text-foreground/80">{s.runs}</td>
-                  <td className="px-5 py-4">
+                  <td className="px-5 py-4 table-sticky-actions">
                     <div className="flex items-center gap-1">
                       <IconBtn tone="warning"><Pause className="h-4 w-4" /></IconBtn>
                       <IconBtn tone="success"><Zap className="h-4 w-4" /></IconBtn>
@@ -241,9 +241,9 @@ function ManageSchedulesPage() {
   );
 }
 
-function SortTh({ children }: { children: React.ReactNode }) {
+function SortTh({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <th className="px-5 py-3 whitespace-nowrap">
+    <th className={cn("px-5 py-3 whitespace-nowrap", className)}>
       <span className="inline-flex items-center gap-1">{children}<ChevronDown className="h-3 w-3 opacity-60" /></span>
     </th>
   );

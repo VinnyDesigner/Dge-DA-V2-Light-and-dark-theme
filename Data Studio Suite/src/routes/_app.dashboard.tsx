@@ -23,6 +23,7 @@ import {
   Users,
   Wand2,
   Zap,
+  Server,
 } from "lucide-react";
 import {
   Area,
@@ -117,7 +118,7 @@ const recent = [
 ];
 
 const quickNav = [
-  { l: "Data Sources", to: "/data-sources/index", i: Database },
+  { l: "Data Sources", to: "/data-sources/index", i: Server },
   { l: "Data Layers", to: "/data-management/layers", i: Layers },
   { l: "Deliveries", to: "/operations/deliveries", i: Send },
   { l: "Workflow Monitor", to: "/operations/workflow", i: Activity },
@@ -162,47 +163,35 @@ function Dashboard() {
           </>
         )}
 
-        <div className="relative flex flex-col gap-2 py-2 px-5">
-          <div className="flex flex-col gap-2 xl:flex-row xl:items-start xl:justify-between">
-            <div className="min-w-0 flex-1">
-              <div className="flex flex-wrap items-start gap-3">
-                <h1 className="break-words text-xl font-bold tracking-tight text-foreground sm:text-2xl lg:text-3xl">Data Automation Studio</h1>
-                <div className="mt-1.5 inline-flex items-center gap-1.5 rounded-full bg-success/10 px-2 py-0.5 text-[12px] font-medium text-success ring-1 ring-inset ring-success/25">
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-success" /> SYSTEM OPERATIONAL
-                </div>
-              </div>
-              <p className="mt-0.5 text-[13px] font-medium text-foreground/50 lg:text-[14px]">Jul 9, 2026 · Platform overview &amp; live health</p>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-1.5 xl:shrink-0">
-              <button className={cn(
-                "group relative inline-flex items-center gap-1.5 overflow-hidden rounded-lg px-3.5 py-1.5 text-[13px] font-semibold transition-all hover:-translate-y-px",
-                isLight
-                  ? "bg-linear-to-r from-[#8b5cf6] to-[#7c3aed] text-white shadow-[0_8px_24px_-6px_rgba(124,58,237,0.35)] ring-1 ring-inset ring-white/20 hover:shadow-[0_10px_30px_-6px_rgba(124,58,237,0.45)]"
-                  : "bg-linear-to-r from-[#a855f7] to-[#7c3aed] text-white shadow-[0_8px_24px_-6px_rgba(168,85,247,0.6)] ring-1 ring-inset ring-white/15 hover:shadow-[0_10px_30px_-6px_rgba(168,85,247,0.75)]"
-              )}>
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/70 opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
-                </span>
-                <Activity className="h-3.5 w-3.5" /> Live Monitor
-              </button>
-              <button className={cn(
-                "inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-[13px] font-medium transition-all",
-                isLight
-                  ? "border-border/60 bg-white/70 text-foreground/70 hover:border-[#a855f7]/30 hover:bg-white hover:text-foreground"
-                  : "border-border/60 bg-card/60 text-foreground/70 hover:border-[#a855f7]/40 hover:text-foreground"
-              )}>
-                <RefreshCw className="h-3.5 w-3.5" /> Refresh
-              </button>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-4 lg:gap-5">
+        <div className="relative flex flex-col gap-6 py-6 px-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="grid flex-1 grid-cols-2 gap-4 sm:grid-cols-4 lg:gap-8">
             <InlineMetric label="Records today" value="2.4M" hint="↑ 12.3%" hintTone="success" />
             <InlineMetric label="Composite success" value="94.8%" hint="Composite" />
             <InlineMetric label="Avg cycle time" value="42m" hint="Per workflow" />
             <InlineMetric label="Alerts" value="6" hint="3 Errors · 3 Warnings" hintTone="danger" isCount />
+          </div>
+
+          <div className="flex flex-wrap items-center gap-1.5 shrink-0 self-start lg:self-center">
+            <button className={cn(
+              "group relative inline-flex items-center gap-1.5 overflow-hidden rounded-lg px-3.5 py-1.5 text-[13px] font-semibold transition-all hover:-translate-y-px",
+              isLight
+                ? "bg-linear-to-r from-[#2563eb] to-[#3b82f6] text-white shadow-[0_8px_24px_-6px_rgba(37,99,235,0.35)] ring-1 ring-inset ring-white/20 hover:shadow-[0_10px_30px_-6px_rgba(37,99,235,0.45)]"
+                : "bg-linear-to-r from-[#3b82f6] to-[#1d4ed8] text-white shadow-[0_8px_24px_-6px_rgba(59,130,246,0.6)] ring-1 ring-inset ring-white/15 hover:shadow-[0_10px_30px_-6px_rgba(59,130,246,0.75)]"
+            )}>
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/70 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
+              </span>
+              <Activity className="h-3.5 w-3.5" /> Live Monitor
+            </button>
+            <button className={cn(
+              "inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-[13px] font-medium transition-all",
+              isLight
+                ? "border-border/60 bg-white/70 text-foreground/70 hover:border-[#a855f7]/30 hover:bg-white hover:text-foreground"
+                : "border-border/60 bg-card/60 text-foreground/70 hover:border-[#a855f7]/40 hover:text-foreground"
+            )}>
+              <RefreshCw className="h-3.5 w-3.5" /> Refresh
+            </button>
           </div>
         </div>
       </GlowSurface>
@@ -244,7 +233,7 @@ function Dashboard() {
           progress={0}
         />
         <ModuleCard
-          icon={<Database className="h-4 w-4" />}
+          icon={<Server className="h-4 w-4" />}
           label="Data Sources"
           value="0"
           unit="Sources"
@@ -602,11 +591,15 @@ function InlineMetric({
   const isLight = theme === "light";
   return (
     <div className="min-w-0">
-      <div className={`text-[25px] font-extrabold leading-none tracking-tight lg:text-[32px] ${isCount ? "text-danger" : "text-foreground"}`}>{value}</div>
-      <div className="mt-1 text-[12px] font-semibold tracking-wide text-foreground/60 lg:text-[13px]">{label}</div>
+      <div className={`text-[24px] xs:text-[28px] sm:text-[32px] md:text-[36px] lg:text-[42px] xl:text-[48px] font-black leading-none tracking-tight ${isCount ? "text-danger" : "text-foreground"}`}>
+        {value}
+      </div>
+      <div className="mt-1.5 text-[11.5px] xs:text-[12px] sm:text-[12.5px] font-bold tracking-wide text-foreground/70 lg:text-[13.5px]">
+        {label}
+      </div>
       {hint && (
         <div
-          className={`mt-0.5 text-[11px] font-medium lg:text-[12px] ${
+          className={`mt-1 text-[10px] xs:text-[10.5px] sm:text-[11px] font-semibold lg:text-[12px] ${
             hintTone === "success" ? "text-success" : hintTone === "danger" ? "text-danger" : "text-muted-foreground"
           }`}
         >

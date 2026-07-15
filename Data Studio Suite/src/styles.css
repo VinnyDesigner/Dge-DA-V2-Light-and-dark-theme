@@ -102,7 +102,7 @@
 
   /* Sidebar */
   --sidebar: transparent;
-  --sidebar-foreground: #cbd5e1;
+  --sidebar-foreground: #ffffff;
   --sidebar-accent: rgba(91, 140, 255, 0.1);
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: rgba(255, 255, 255, 0.06);
@@ -253,7 +253,17 @@
   --shadow-glow: 0 0 0 1px rgba(37, 99, 235, 0.25),
     0 20px 60px -20px rgba(37, 99, 235, 0.25);
   --shadow-soft: 0 8px 32px -12px rgba(15, 23, 42, 0.12);
+}
 
+[data-theme="light"] [data-sidebar="sidebar"] {
+  --sidebar: transparent !important;
+  --sidebar-glass-from: #0e1828 !important;
+  --sidebar-glass-to: #0c101c !important;
+  --sidebar-foreground: #ffffff !important;
+  --sidebar-accent-foreground: #ffffff !important;
+  --foreground: #ffffff !important;
+  --muted-foreground: rgba(255, 255, 255, 0.7) !important;
+  --text-muted: rgba(255, 255, 255, 0.6) !important;
 }
 
 .dark {
@@ -680,7 +690,7 @@
   --text-muted: #64748b;
 
   --sidebar: transparent;
-  --sidebar-foreground: #cbd5e1;
+  --sidebar-foreground: #ffffff;
   --sidebar-accent: rgba(91, 140, 255, 0.1);
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: rgba(255, 255, 255, 0.06);
@@ -702,3 +712,283 @@
 [data-sidebar="sidebar"] .scrollbar-thin::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.12);
 }
+
+/* Custom strict padding for login page */
+.login-container-strict {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+@media (min-width: 640px) {
+  .login-container-strict {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+@media (min-width: 1024px) {
+  .login-container-strict {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+}
+
+/* Collapsed sidebar layout & icon centering overrides */
+[data-state="collapsed"][data-collapsible="icon"] [data-sidebar="header"] {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+}
+
+[data-state="collapsed"][data-collapsible="icon"] [data-sidebar="header"] a {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+[data-state="collapsed"][data-collapsible="icon"] [data-sidebar="header"] img,
+.collapsed-logo {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  transform: translateX(-4px) !important; /* Move logo left to align with scrollbar-shifted icons */
+}
+
+[data-state="collapsed"][data-collapsible="icon"] [data-sidebar="menu-button"] {
+  width: 44px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-radius: 9999px !important; /* Perfect circle active background! */
+}
+
+/* Center icon SVG exactly inside the menu button link */
+[data-state="collapsed"][data-collapsible="icon"] [data-sidebar="menu-button"] a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 9999px !important;
+}
+
+[data-state="collapsed"][data-collapsible="icon"] [data-sidebar="menu-button"] svg {
+  margin: 0 !important;
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+}
+
+/* Responsive adjustments for 1920px+ viewports (keeps existing layout) */
+@media (min-width: 1920px) {
+  .login-body-grid {
+    column-gap: 40px !important; /* Visual connection, gap reduced by 60-80px */
+  }
+
+  .login-hero-wrapper {
+    max-width: 860px !important; /* Occupies more horizontal space */
+  }
+
+  .login-hero-heading {
+    font-size: 66px !important; /* Increase heading size by ~18% */
+    line-height: 1.05 !important;
+  }
+
+  .login-hero-subheading {
+    font-size: 42px !important; /* Increase sub-heading size slightly */
+    line-height: 1.1 !important;
+  }
+
+  .login-hero-paragraph {
+    font-size: 19px !important; /* Increase paragraph size slightly */
+    max-width: 620px !important; /* Occupies more space */
+  }
+
+  .login-workflow-hub {
+    transform: scale(1.7) !important; /* Scale workflow graphic by ~35-40% */
+  }
+
+  .login-card-form {
+    max-width: 540px !important; /* Increase login card width by 15-20% */
+  }
+  
+  .login-card-container {
+    padding: 3rem !important; /* 48px padding */
+    border-radius: 32px !important; /* Proportional border-radius */
+  }
+
+  .login-under-card-meta {
+    padding: 20px !important; /* Reduce padding from 48px to 20px */
+  }
+
+  .login-input-field {
+    height: 64px !important; /* Increase input field height proportionally */
+  }
+
+  .login-input-field input {
+    font-size: 16px !important; /* Scaled font size */
+  }
+
+  .login-cta-button {
+    height: 64px !important; /* Increase CTA button height proportionally */
+    font-size: 17px !important; /* Scaled font size */
+  }
+}
+
+/* ============================================================
+   Table Behavior Enhancements
+   ============================================================ */
+
+/* 1. Force table container layout and horizontal scrolling */
+.table-container-scrollable {
+  overflow-x: auto !important;
+  position: relative !important;
+  width: 100% !important;
+}
+
+.table-container-scrollable table {
+  width: max-content !important;
+  min-width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+
+/* 2. Prevent multi-line text wrapping on all headers and cells */
+.table-container-scrollable th,
+.table-container-scrollable td {
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+}
+
+/* 3. Row height consistency & border styling with separate borders */
+.table-container-scrollable tr {
+  height: 52px !important; /* Enforce uniform row height */
+}
+
+.table-container-scrollable th {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="light"] .table-container-scrollable th {
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+}
+
+.table-container-scrollable td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+}
+
+[data-theme="light"] .table-container-scrollable td {
+  border-bottom: 1px solid rgba(15, 23, 42, 0.04) !important;
+}
+
+.table-container-scrollable tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* 4. Sticky Column Utilities */
+
+/* Base Sticky position and z-index */
+.table-sticky-col-1,
+.table-sticky-col-1-wide,
+.table-sticky-col-2,
+.table-sticky-col-2-wide,
+.table-sticky-single-left,
+.table-sticky-actions {
+  position: sticky !important;
+  z-index: 20 !important;
+}
+
+/* Checkbox Column 1 (sticky at left: 0, width exactly 48px) */
+.table-container-scrollable .table-sticky-col-1 {
+  left: 0 !important;
+  width: 48px !important;
+  min-width: 48px !important;
+  max-width: 48px !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+  text-align: center !important;
+}
+
+/* Wide Checkbox Column 1 (sticky at left: 0, width exactly 56px) */
+.table-container-scrollable .table-sticky-col-1-wide {
+  left: 0 !important;
+  width: 56px !important;
+  min-width: 56px !important;
+  max-width: 56px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  text-align: center !important;
+}
+
+/* Column 2: Name/Identifier (sticky at left: 48px, following 48px Col 1 Checkbox) */
+.table-container-scrollable .table-sticky-col-2 {
+  left: 48px !important;
+}
+
+/* Column 2: Name/Identifier Wide (sticky at left: 56px, following 56px Col 1 Checkbox) */
+.table-container-scrollable .table-sticky-col-2-wide {
+  left: 56px !important;
+}
+
+/* Single Left Sticky Column (sticky at left: 0) */
+.table-container-scrollable .table-sticky-single-left {
+  left: 0 !important;
+}
+
+/* Actions Column (sticky at right: 0) */
+.table-container-scrollable .table-sticky-actions {
+  right: 0 !important;
+}
+
+/* 5. Seamless Background Matching (Uniform Translucent Background for All Cells) */
+
+/* All table headers have the exact same background (no special sticky highlighting) */
+.table-container-scrollable th {
+  background-color: rgba(22, 34, 53, 0.95) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+[data-theme="light"] .table-container-scrollable th {
+  background-color: rgba(241, 245, 249, 0.95) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+/* All table data cells have the exact same background (no special sticky highlighting) */
+.table-container-scrollable td {
+  background-color: rgba(20, 30, 48, 0.95) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+[data-theme="light"] .table-container-scrollable td {
+  background-color: rgba(255, 255, 255, 0.94) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+
+/* Uniform Row Hover matching for all cells */
+.table-container-scrollable tr:hover th,
+.table-container-scrollable tr:hover td {
+  background-color: rgba(24, 37, 60, 0.95) !important;
+}
+
+[data-theme="light"] .table-container-scrollable tr:hover th,
+[data-theme="light"] .table-container-scrollable tr:hover td {
+  background-color: rgba(241, 245, 249, 0.95) !important;
+}
+

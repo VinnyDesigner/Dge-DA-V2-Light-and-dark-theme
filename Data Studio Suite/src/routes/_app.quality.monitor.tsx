@@ -239,11 +239,11 @@ function DataQualityPage() {
 
       {/* Table */}
       <Surface className="!p-0">
-        <div className="overflow-x-auto">
+        <div className="table-container-scrollable scrollbar-thin">
           <table className="w-full text-left text-[14px]">
             <thead>
               <tr className="border-b border-border/60 bg-foreground/[0.04] text-[12px] font-bold tracking-wide text-muted-foreground/80">
-                <Th>Delivery</Th>
+                <Th className="table-sticky-single-left">Delivery</Th>
                 <Th>Stakeholder</Th>
                 <Th>Status</Th>
                 <Th>Pass Rate</Th>
@@ -253,7 +253,7 @@ function DataQualityPage() {
                 <Th>Failures</Th>
                 <Th>Transforms</Th>
                 <Th>Completed</Th>
-                <Th>Export</Th>
+                <Th className="table-sticky-actions">Export</Th>
               </tr>
             </thead>
             <tbody>
@@ -262,7 +262,7 @@ function DataQualityPage() {
                   key={r.delivery}
                   className="border-b border-border/40 last:border-0 hover:bg-foreground/[0.02]"
                 >
-                  <Td>
+                  <Td className="table-sticky-single-left">
                     <span className="inline-flex items-center gap-2 font-semibold text-foreground">
                       <Package className="h-4 w-4 text-muted-foreground" />
                       {r.delivery}
@@ -283,7 +283,7 @@ function DataQualityPage() {
                   <Td><Dash /></Td>
                   <Td><Dash /></Td>
                   <Td><Dash /></Td>
-                  <Td><Dash /></Td>
+                  <Td className="table-sticky-actions"><Dash /></Td>
                 </tr>
               ))}
             </tbody>
@@ -303,11 +303,11 @@ function DataQualityPage() {
   );
 }
 
-function Th({ children }: { children: React.ReactNode }) {
-  return <th className="px-5 py-3 text-left whitespace-nowrap">{children}</th>;
+function Th({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <th className={cn("px-5 py-3 text-left whitespace-nowrap", className)}>{children}</th>;
 }
-function Td({ children }: { children: React.ReactNode }) {
-  return <td className="px-5 py-4 align-middle whitespace-nowrap">{children}</td>;
+function Td({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <td className={cn("px-5 py-4 align-middle whitespace-nowrap", className)}>{children}</td>;
 }
 function Dash() {
   return <span className="text-muted-foreground/60">—</span>;

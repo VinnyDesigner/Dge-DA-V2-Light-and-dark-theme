@@ -57,8 +57,8 @@ export function AppSidebar() {
         aria-hidden="true"
       />
       <SidebarHeader className="px-3 py-5 group-data-[collapsible=icon]:px-0 group-data-[collapsible=icon]:py-4">
-        <div className="flex flex-col gap-2 group-data-[collapsible=icon]:items-center">
-          <Link to="/dashboard" className="flex min-w-0 items-center gap-3 group-data-[collapsible=icon]:justify-center">
+        <div className="flex flex-col gap-2 w-full group-data-[collapsible=icon]:items-center">
+          <Link to="/dashboard" className="flex min-w-0 items-center gap-3 group-data-[collapsible=icon]:w-full group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:gap-0">
             <img
               src={headerLogo}
               alt="Abu Dhabi Spatial Data"
@@ -70,7 +70,7 @@ export function AppSidebar() {
             <img
               src={collapsedIcon}
               alt="SDI"
-              className="hidden h-10 w-10 object-contain group-data-[collapsible=icon]:block"
+              className="hidden h-10 w-10 object-contain mx-auto group-data-[collapsible=icon]:block collapsed-logo"
             />
           </Link>
         </div>
@@ -84,9 +84,9 @@ export function AppSidebar() {
           const iconColor = isLight ? navColorClassLight[group.color] : navColorClass[group.color];
           return (
             <Collapsible key={group.label} open={isCollapsed ? true : undefined} defaultOpen={hasActive} className="group/collapsible">
-              <SidebarGroup className="py-0 group-data-[collapsible=icon]:px-1">
-                <SidebarGroupLabel asChild>
-                  <CollapsibleTrigger className="mt-2 flex w-full items-center justify-between overflow-hidden rounded-md px-2 py-1.5 text-[14px] font-semibold tracking-wide text-muted-foreground/80 hover:text-foreground">
+              <SidebarGroup className="py-0 group-data-[collapsible=icon]:px-0">
+                <SidebarGroupLabel asChild className="group-data-[collapsible=icon]:hidden">
+                  <CollapsibleTrigger className="mt-2 flex w-full items-center justify-between overflow-hidden rounded-md px-2 py-1.5 text-[14px] font-semibold tracking-wide text-white hover:text-white">
                     <span className="truncate">{group.label}</span>
                     <ChevronRight className="h-3.5 w-3.5 shrink-0 transition-transform group-data-[state=open]/collapsible:rotate-90" />
                   </CollapsibleTrigger>
@@ -97,15 +97,15 @@ export function AppSidebar() {
                       {group.items.map((item) => {
                         const active = pathname === item.url;
                         return (
-                          <SidebarMenuItem key={item.url}>
+                          <SidebarMenuItem key={item.url} className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:w-full">
                             <SidebarMenuButton
                               asChild
                               isActive={active}
                               tooltip={item.title}
                               className={cn(
-                                "group/item relative h-auto min-h-11 overflow-hidden rounded-xl px-3.5 py-2 text-[16px] font-medium text-sidebar-foreground/90 transition-all",
-                                "group-data-[collapsible=icon]:!min-h-10 group-data-[collapsible=icon]:!h-10 group-data-[collapsible=icon]:!w-10 group-data-[collapsible=icon]:!px-0 group-data-[collapsible=icon]:!py-0 group-data-[collapsible=icon]:justify-center",
-                                "hover:bg-[var(--sidebar-hover)] hover:text-foreground",
+                                "group/item relative h-auto min-h-11 overflow-hidden rounded-xl px-3.5 py-2 text-[16px] font-medium text-white transition-all",
+                                "group-data-[collapsible=icon]:!min-h-10 group-data-[collapsible=icon]:!h-10 group-data-[collapsible=icon]:!w-10 group-data-[collapsible=icon]:!px-0 group-data-[collapsible=icon]:!py-0 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:mx-auto group-data-[collapsible=icon]:!gap-0",
+                                "hover:bg-[var(--sidebar-hover)] hover:text-white",
                                 !isLight && "data-[active=true]:!bg-[radial-gradient(120%_140%_at_50%_50%,rgba(37,99,235,0.22)_0%,rgba(37,99,235,0.08)_55%,var(--sidebar-active-edge)_100%)]",
                                 !isLight && "data-[active=true]:text-sidebar-accent-foreground",
                                 !isLight && "data-[active=true]:ring-1 data-[active=true]:ring-inset data-[active=true]:ring-[rgba(91,140,255,0.55)]",
@@ -167,8 +167,8 @@ export function AppSidebar() {
         <div className="space-y-2.5 rounded-xl border border-foreground/5 bg-[var(--sidebar-footer-bg)] p-3">
           <div>
             <div className="mb-1 flex items-center justify-between text-[14px]">
-              <span className="text-sidebar-foreground/80">Storage</span>
-              <span className="text-sidebar-foreground font-semibold">64%</span>
+              <span className="text-white">Storage</span>
+              <span className="text-white font-semibold">64%</span>
             </div>
             <div className="h-1.5 overflow-hidden rounded-full bg-foreground/5">
               <div className="h-full w-[64%] rounded-full bg-linear-to-r from-primary to-accent" />
@@ -179,7 +179,7 @@ export function AppSidebar() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
             </span>
-            <span className="text-sidebar-foreground/90 font-medium">All systems operational</span>
+            <span className="text-white font-medium">All systems operational</span>
           </div>
         </div>
       </SidebarFooter>

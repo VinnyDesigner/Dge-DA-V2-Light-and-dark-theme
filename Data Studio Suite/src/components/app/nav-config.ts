@@ -75,7 +75,7 @@ export const navGroups: NavGroup[] = [
     label: "Data Sources",
     color: "emerald",
     items: [
-      { title: "Data Sources", url: "/data-sources", icon: Database },
+      { title: "Data Sources", url: "/data-sources", icon: Server },
       { title: "Onboard Source", url: "/data-sources/onboard", icon: PlugZap },
     ],
   },
@@ -121,7 +121,7 @@ export const navGroups: NavGroup[] = [
     label: "Quality Rules",
     color: "rose",
     items: [
-      { title: "Data Quality", url: "/quality/monitor", icon: ShieldAlert },
+      { title: "Data Quality", url: "/quality/monitor", icon: ShieldCheck },
       { title: "Quality Rules", url: "/quality/rules", icon: ListChecks },
       { title: "Rule Enforcement", url: "/quality/enforcement", icon: Shield },
     ],

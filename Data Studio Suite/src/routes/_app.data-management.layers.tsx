@@ -105,12 +105,19 @@ function LayersPage() {
           </button>
         </div>
 
-        <div className="overflow-x-auto">
+        <div className="table-container-scrollable scrollbar-thin">
           <table className="w-full text-left text-[14px]">
             <thead>
               <tr className="border-b border-border/60 bg-foreground/[0.04] text-[12px] font-bold tracking-wide text-muted-foreground/70">
                 {columns.map((c) => (
-                  <th key={c} className="px-5 py-3 whitespace-nowrap">
+                  <th
+                    key={c}
+                    className={cn(
+                      "px-5 py-3 whitespace-nowrap",
+                      c === "Alias Name" && "table-sticky-single-left",
+                      c === "Actions" && "table-sticky-actions"
+                    )}
+                  >
                     <span className="inline-flex items-center gap-1">{c}<ChevronDown className="h-3 w-3 opacity-60" /></span>
                   </th>
                 ))}

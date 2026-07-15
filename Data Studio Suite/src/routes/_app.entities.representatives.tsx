@@ -61,7 +61,7 @@ function RepsPage() {
         title="Representatives"
         description="Contacts assigned to entities — manage profiles, access and credentials"
         actions={
-          <button className="inline-flex items-center gap-1.5 rounded-lg bg-linear-to-b from-success to-success/90 px-3 py-2 text-[15px] font-medium text-white shadow-[0_4px_16px_-4px_rgba(16,185,129,0.5),inset_0_1px_0_rgba(255,255,255,0.15)]">
+          <button className="inline-flex items-center gap-1.5 rounded-lg bg-linear-to-b from-primary to-primary/90 px-3 py-2 text-[15px] font-medium text-white shadow-[0_4px_16px_-4px_rgba(37,99,235,0.5),inset_0_1px_0_rgba(255,255,255,0.15)]">
             <Plus className="h-3.5 w-3.5" /> Add Representative
           </button>
         }
@@ -89,26 +89,26 @@ function RepsPage() {
           </div>
         </div>
 
-        <div className="scrollbar-thin overflow-x-auto">
+        <div className="table-container-scrollable scrollbar-thin">
           <table className="w-full text-[16px]">
             <thead>
               <tr className="bg-foreground/[0.04] text-[12px] font-bold tracking-wide text-muted-foreground/70">
-                <th className="py-3 pl-4"><input type="checkbox" className="h-3.5 w-3.5 rounded border-foreground/20 bg-foreground/5" /></th>
-                <th className="py-3 pr-4 text-left">Full Name</th>
+                <th className="py-3 pl-4 table-sticky-col-1"><input type="checkbox" className="h-3.5 w-3.5 rounded border-foreground/20 bg-foreground/5" /></th>
+                <th className="py-3 pr-4 text-left table-sticky-col-2">Full Name</th>
                 <th className="py-3 pr-4 text-left">Username</th>
                 <th className="py-3 pr-4 text-left">Entity</th>
                 <th className="py-3 pr-4 text-left">Role</th>
                 <th className="py-3 pr-4 text-left">Email</th>
                 <th className="py-3 pr-4 text-left">Phone</th>
                 <th className="py-3 pr-4 text-left">Department</th>
-                <th className="py-3 pr-4 text-right">Actions</th>
+                <th className="py-3 pr-4 text-right table-sticky-actions">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border/50">
               {paginatedRows.map((r) => (
                 <tr key={r.username} className="group transition-colors hover:bg-foreground/[0.02]">
-                  <td className="py-3 pl-4"><input type="checkbox" className="h-3.5 w-3.5 rounded border-foreground/20 bg-foreground/5" /></td>
-                  <td className="py-3 pr-4">
+                  <td className="py-3 pl-4 table-sticky-col-1"><input type="checkbox" className="h-3.5 w-3.5 rounded border-foreground/20 bg-foreground/5" /></td>
+                  <td className="py-3 pr-4 table-sticky-col-2">
                     <div className="flex items-center gap-2.5">
                       <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-primary/40 to-secondary-accent/40 text-[14px] font-semibold text-white ring-1 ring-inset ring-white/10 initials-avatar">
                         {r.name.split(" ").map((p) => p[0]).slice(0, 2).join("")}
@@ -126,7 +126,7 @@ function RepsPage() {
                   <td className="py-3 pr-4 text-muted-foreground">{r.email}</td>
                   <td className="py-3 pr-4 font-mono text-muted-foreground">{r.phone}</td>
                   <td className="py-3 pr-4 text-muted-foreground">{r.dept}</td>
-                  <td className="py-3 pr-4">
+                  <td className="py-3 pr-4 table-sticky-actions">
                     <div className="flex justify-end gap-1 opacity-70 transition-opacity group-hover:opacity-100">
                       <IconBtn label="View"><Eye className="h-3.5 w-3.5" /></IconBtn>
                       <IconBtn label="Edit"><Pencil className="h-3.5 w-3.5" /></IconBtn>

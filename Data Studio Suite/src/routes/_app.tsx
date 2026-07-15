@@ -28,7 +28,7 @@ function ThemedAppShell() {
         <AppSidebar />
         <SidebarInset className="flex min-w-0 flex-1 flex-col bg-transparent">
           <AppTopbar />
-          <main className="w-full min-w-0 max-w-full flex-1 overflow-x-hidden px-4 py-6 sm:px-5 lg:px-6">
+          <main className="w-full min-w-0 max-w-full flex-1 overflow-x-hidden px-3 py-6 sm:px-4 lg:px-5">
             <Outlet />
           </main>
 
