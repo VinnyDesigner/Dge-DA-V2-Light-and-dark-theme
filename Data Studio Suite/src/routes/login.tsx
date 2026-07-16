@@ -224,56 +224,57 @@ function Login() {
         <div className="grid flex-1 grid-cols-1 items-center justify-items-center gap-8 py-4 lg:grid-cols-[1.3fr_1fr] lg:gap-8 xl:gap-12 2xl:gap-16 lg:justify-items-stretch login-body-grid">
 
           {/* -------------------- LEFT / Hero copy -------------------- */}
-          <div className="relative order-1 flex flex-col items-start text-left w-full max-w-[500px] lg:max-w-[480px] xl:max-w-[760px] 2xl:max-w-[900px] login-hero-wrapper">
-            <div className="relative w-full flex items-center gap-4 sm:gap-5 login-logo-title-group">
+          <div className="relative order-1 flex flex-col items-start text-left w-full max-w-[500px] lg:max-w-[650px] xl:max-w-[850px] 2xl:max-w-[1000px] login-hero-wrapper">
+            <div className="relative w-full flex items-start gap-4 sm:gap-5 login-logo-title-group">
               {/* Premium Glow Highlight Effect behind title */}
               <div className="absolute -left-12 -top-12 -right-12 -bottom-12 pointer-events-none bg-gradient-to-r from-primary/25 via-accent/15 to-info/20 blur-3xl opacity-75 rounded-full" />
               
               <AnimatedLogo />
 
-              <motion.div
-                initial={{ opacity: 0, x: -12, filter: "blur(6px)" }}
-                animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                whileHover={{ 
-                  scale: 1.03, 
-                  x: 6, 
-                  filter: "drop-shadow(0 4px 20px rgba(56,189,248,0.5))"
-                }}
-                transition={{ 
-                  type: "spring", 
-                  stiffness: 250, 
-                  damping: 18,
-                  x: { duration: 0.3 }
-                }}
-                className="relative text-[24px] min-[400px]:text-[28px] sm:text-[34px] md:text-[38px] lg:text-[28px] xl:text-[40px] 2xl:text-[52px] font-extrabold leading-[1.02] tracking-[-0.02em] bg-gradient-to-r from-white via-slate-100 to-sky-300 bg-clip-text text-transparent drop-shadow-[0_4px_16px_rgba(56,189,248,0.25)] login-hero-heading cursor-default select-none"
-              >
-                <span className="whitespace-nowrap">Data Automation</span><br className="xl:hidden" /> Studio
-              </motion.div>
-            </div>
+              <div className="flex flex-col sm:flex-row sm:items-start lg:items-center gap-3.5 flex-1 min-w-0">
+                <motion.div
+                  initial={{ opacity: 0, x: -12, filter: "blur(6px)" }}
+                  animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                  whileHover={{ 
+                    scale: 1.01, 
+                    x: 3, 
+                    filter: "drop-shadow(0 4px 20px rgba(56,189,248,0.4))"
+                  }}
+                  transition={{ 
+                    type: "spring", 
+                    stiffness: 250, 
+                    damping: 18,
+                    x: { duration: 0.3 }
+                  }}
+                  className="relative text-[24px] min-[400px]:text-[28px] sm:text-[34px] md:text-[38px] lg:text-[28px] xl:text-[40px] 2xl:text-[52px] font-extrabold leading-[1.02] tracking-[-0.02em] bg-gradient-to-r from-white via-slate-100 to-sky-300 bg-clip-text text-transparent drop-shadow-[0_4px_16px_rgba(56,189,248,0.25)] login-hero-heading cursor-default select-none"
+                >
+                  <span className="whitespace-nowrap">Data Automation Studio</span>
+                </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-success/30 bg-success/10 px-3 py-1 text-[10.5px] font-semibold tracking-wide text-success"
-            >
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success/70" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
-              </span>
-              Live Enterprise Data Platform
-            </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.1 }}
+                  className="inline-flex w-fit items-center gap-2 rounded-full border border-success/30 bg-success/10 px-3 py-1 text-[10.5px] font-semibold tracking-wide text-success shrink-0 sm:mt-1.5 xl:mt-2.5"
+                >
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success/70" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
+                  </span>
+                  Live Enterprise Data Platform
+                </motion.div>
+              </div>
+            </div>
 
             <motion.h1
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.15 }}
-              className="mt-5 text-[18px] min-[400px]:text-[20px] sm:text-[24px] md:text-[28px] lg:text-[20px] xl:text-[28px] 2xl:text-[36px] font-bold leading-[1.1] tracking-[-0.02em] login-hero-subheading"
+              className="mt-5 text-[18px] min-[400px]:text-[20px] sm:text-[24px] md:text-[28px] lg:text-[20px] xl:text-[28px] 2xl:text-[36px] font-bold leading-[1.15] tracking-[-0.02em] login-hero-subheading whitespace-nowrap lg:whitespace-normal xl:whitespace-nowrap"
             >
               <span className="text-primary">Automate,</span>{" "}
               <span className="text-success">Monitor,</span>{" "}
-              <span className="text-info">and Governance</span>
-              <br />
+              <span className="text-info">and Governance</span>{" "}
               <span className="text-foreground">Enterprise Data Workflows</span>
             </motion.h1>
 
@@ -281,7 +282,7 @@ function Login() {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25 }}
-              className="mt-5 max-w-[500px] text-[12px] sm:text-[13.5px] lg:text-[13px] xl:text-[15px] 2xl:text-[17px] leading-[1.75] text-muted-foreground login-hero-paragraph"
+              className="mt-5 max-w-[750px] text-[12px] sm:text-[13.5px] lg:text-[13px] xl:text-[15px] 2xl:text-[17px] leading-[1.75] text-muted-foreground login-hero-paragraph"
             >
               A secure command center for government-grade data workflows —
               orchestrating validation, transformation, metadata and quality
@@ -289,7 +290,7 @@ function Login() {
             </motion.p>
 
             {/* Circular diagram placed responsively below text */}
-            <div className="relative flex w-full items-center justify-center py-6 mt-6 lg:mt-8 login-workflow-hub-container">
+            <div className="relative flex w-full items-center justify-center py-6 mt-12 lg:mt-20 xl:mt-28 login-workflow-hub-container">
               <div className="hidden xl:block">
                 <CircularHub />
               </div>

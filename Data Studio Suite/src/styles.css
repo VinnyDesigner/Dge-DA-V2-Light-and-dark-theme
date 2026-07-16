@@ -796,16 +796,25 @@
   .login-hero-wrapper {
     align-self: flex-start !important;
     padding-top: 2rem !important;
+    max-width: 650px !important;
+  }
+  .login-hero-paragraph {
+    max-width: 650px !important;
   }
 }
 @media (min-width: 1280px) {
   .login-hero-wrapper {
     padding-top: 3rem !important;
+    max-width: 850px !important;
+  }
+  .login-hero-paragraph {
+    max-width: 820px !important;
   }
 }
 @media (min-width: 1536px) {
   .login-hero-wrapper {
     padding-top: 4rem !important;
+    max-width: 1000px !important;
   }
 }
 
@@ -835,7 +844,7 @@
   }
 
   .login-workflow-hub {
-    transform: scale(1.7) !important; /* Scale workflow graphic by ~35-40% */
+    transform: scale(1.2) !important; /* Scale workflow graphic moderately */
   }
 
   .login-card-form {
