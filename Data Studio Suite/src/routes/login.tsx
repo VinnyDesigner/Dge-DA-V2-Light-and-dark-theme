@@ -206,7 +206,7 @@ function Login() {
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="flex items-center justify-between gap-4 py-5 sm:py-6 lg:py-7"
+          className="flex items-center justify-between gap-4 pt-0 pb-3 sm:pb-4 lg:pb-5"
         >
           <img
             src="/DGE White.png"
@@ -221,7 +221,7 @@ function Login() {
         </motion.header>
 
         {/* Body */}
-        <div className="grid flex-1 grid-cols-1 items-center justify-items-center gap-8 py-4 lg:grid-cols-[1.3fr_1fr] lg:gap-8 xl:gap-12 2xl:gap-16 lg:justify-items-stretch login-body-grid">
+        <div className="grid flex-1 grid-cols-1 items-center justify-items-center gap-6 pt-2 pb-2 lg:pt-3 xl:pt-4 lg:grid-cols-[1.3fr_1fr] lg:gap-6 xl:gap-8 lg:justify-items-stretch login-body-grid">
 
           {/* -------------------- LEFT / Hero copy -------------------- */}
           <div className="relative order-1 flex flex-col items-start text-left w-full max-w-[500px] lg:max-w-[650px] xl:max-w-[850px] 2xl:max-w-[1000px] login-hero-wrapper">
@@ -290,7 +290,7 @@ function Login() {
             </motion.p>
 
             {/* Circular diagram placed responsively below text */}
-            <div className="relative flex w-full items-center justify-center py-6 mt-12 lg:mt-20 xl:mt-28 login-workflow-hub-container">
+            <div className="relative flex w-full items-center justify-center py-2 mt-4 lg:mt-6 xl:mt-7 login-workflow-hub-container">
               <div className="hidden xl:block">
                 <CircularHub />
               </div>
@@ -314,7 +314,7 @@ function Login() {
               className="relative w-full max-w-[460px] login-card-form"
             >
               {/* Card */}
-              <div className="glass-strong relative overflow-hidden rounded-[24px] px-6 py-8 shadow-[var(--shadow-elevated)] sm:rounded-[28px] sm:px-8 sm:py-10 login-card-container">
+              <div className="glass-strong relative overflow-hidden rounded-[24px] px-6 py-6 shadow-[var(--shadow-elevated)] sm:rounded-[28px] sm:px-8 sm:py-7 login-card-container">
                 <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-primary/[0.08] to-transparent" />
                 <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-primary/20 blur-3xl" />
                 <div className="pointer-events-none absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-info/10 blur-3xl" />
@@ -324,17 +324,17 @@ function Login() {
                   <div className="flex items-center gap-3.5">
                     <AnimatedShield />
                     <div>
-                      <div className="text-[17px] font-semibold tracking-tight text-foreground">
+                      <div className="text-[17px] font-semibold tracking-tight text-foreground login-card-title">
                         Secure Workspace
                       </div>
-                      <div className="mt-0.5 text-[12.5px] text-muted-foreground">
+                      <div className="mt-0.5 text-[12.5px] text-muted-foreground login-card-subtitle">
                         Access your enterprise automation platform
                       </div>
                     </div>
                   </div>
 
                   {/* Inputs */}
-                  <div className="mt-8 space-y-4">
+                  <div className="mt-5 space-y-4">
                     <FloatingField
                       label="Username"
                       icon={<User className="h-4 w-4" />}
@@ -374,7 +374,7 @@ function Login() {
                     )}
 
                     <div className="flex items-center justify-between pt-1 text-[12.5px]">
-                      <label className="flex cursor-pointer items-center gap-2 text-muted-foreground hover:text-foreground">
+                      <label className="flex cursor-pointer items-center gap-2 text-muted-foreground hover:text-foreground login-checkbox-label">
                         <input
                           type="checkbox"
                           className="h-3.5 w-3.5 rounded border-white/20 bg-white/5 accent-primary"
@@ -383,7 +383,7 @@ function Login() {
                       </label>
                       <a
                         href="#"
-                        className="font-medium text-accent transition-colors hover:text-foreground"
+                        className="font-medium text-accent transition-colors hover:text-foreground login-forgot-link"
                       >
                         Forgot password?
                       </a>
@@ -395,7 +395,7 @@ function Login() {
                       disabled={loading !== "idle"}
                       whileHover={loading === "idle" ? { y: -1 } : undefined}
                       whileTap={loading === "idle" ? { y: 0, scale: 0.99 } : undefined}
-                      className="group relative mt-4 inline-flex h-[54px] w-full items-center justify-center gap-2.5 overflow-hidden rounded-full bg-primary text-[15px] font-semibold tracking-tight text-primary-foreground shadow-[0_12px_40px_-12px_rgba(59,130,246,0.55)] transition-all disabled:opacity-95 login-cta-button"
+                      className="group relative mt-3 inline-flex h-[50px] w-full items-center justify-center gap-2.5 overflow-hidden rounded-full bg-primary text-[15px] font-semibold tracking-tight text-primary-foreground shadow-[0_12px_40px_-12px_rgba(59,130,246,0.55)] transition-all disabled:opacity-95 login-cta-button"
                     >
                       <span className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-b from-white/20 via-transparent to-transparent" />
                       <span className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/20" />
@@ -429,7 +429,7 @@ function Login() {
               </div>
 
               {/* Under card meta */}
-              <div className="mt-5 flex items-center justify-between px-2 text-[11.5px] text-muted-foreground login-under-card-meta">
+              <div className="mt-3.5 flex items-center justify-between px-2 text-[11.5px] text-muted-foreground login-under-card-meta">
                 <span className="inline-flex items-center gap-1.5">
                   <Fingerprint className="h-3.5 w-3.5 text-success" />
                   End-to-end encrypted session
@@ -662,11 +662,11 @@ function FloatingField({
 
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-[11px] font-semibold tracking-wide text-muted-foreground/80">
+      <label className="text-[11px] font-semibold tracking-wide text-muted-foreground/80 login-field-label">
         {label}
       </label>
       <div
-        className={`group relative flex h-[54px] items-center gap-3 overflow-hidden rounded-full border px-5 pl-5 transition-all duration-300 login-input-field ${
+        className={`group relative flex h-[50px] items-center gap-3 overflow-hidden rounded-full border px-5 pl-5 transition-all duration-300 login-input-field ${
           focused
             ? "border-primary/60 bg-white/[0.07]"
             : "border-white/[0.10] bg-white/[0.04] hover:border-white/[0.18]"
