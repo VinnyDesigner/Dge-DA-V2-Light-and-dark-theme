@@ -221,10 +221,10 @@ function Login() {
         </motion.header>
 
         {/* Body */}
-        <div className="grid flex-1 grid-cols-1 items-center justify-items-center gap-6 pt-2 pb-2 lg:pt-3 xl:pt-4 lg:grid-cols-[1.3fr_1fr] lg:gap-6 xl:gap-8 lg:justify-items-stretch login-body-grid">
+        <div className="grid flex-1 grid-cols-1 items-center lg:items-stretch justify-items-center gap-6 pt-2 pb-2 lg:pt-2 xl:pt-3 lg:grid-cols-[1.3fr_1fr] lg:gap-6 xl:gap-8 lg:justify-items-stretch login-body-grid">
 
           {/* -------------------- LEFT / Hero copy -------------------- */}
-          <div className="relative order-1 flex flex-col items-start text-left w-full max-w-[500px] lg:max-w-[650px] xl:max-w-[850px] 2xl:max-w-[1000px] login-hero-wrapper">
+          <div className="relative order-1 flex flex-col items-start text-left w-full max-w-[500px] lg:max-w-[650px] xl:max-w-[850px] 2xl:max-w-[1000px] lg:self-start login-hero-wrapper">
             <div className="relative w-full flex items-center gap-4 sm:gap-5 login-logo-title-group">
               {/* Premium Glow Highlight Effect behind title */}
               <div className="absolute -left-12 -top-12 -right-12 -bottom-12 pointer-events-none bg-gradient-to-r from-primary/25 via-accent/15 to-info/20 blur-3xl opacity-75 rounded-full" />

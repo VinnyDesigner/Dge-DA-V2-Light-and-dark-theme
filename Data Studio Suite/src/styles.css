@@ -832,6 +832,7 @@
 @media (min-width: 1920px) {
   .login-body-grid {
     column-gap: 40px !important; /* Visual connection, gap reduced by 60-80px */
+    padding-top: 1.5rem !important; /* Controlled top space on massive 32-inch monitors */
   }
 
   .login-hero-wrapper {
