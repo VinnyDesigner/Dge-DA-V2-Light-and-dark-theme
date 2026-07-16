@@ -154,7 +154,7 @@ function JobsPage() {
       <Surface className="!p-0 overflow-hidden">
         {/* Filters ribbon matching Image 2 dropdown layout */}
         <div className="flex flex-wrap items-center gap-3 border-b border-border/60 p-4">
-          <div className="relative flex-grow flex-1 min-w-[240px]">
+          <div className="relative w-full sm:w-[300px] shrink-0">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input
               type="text"
@@ -190,6 +190,8 @@ function JobsPage() {
               <SelectItem value="failed" className="cursor-pointer text-[13px]">Failed</SelectItem>
             </SelectContent>
           </Select>
+
+          <div className="flex-1 min-w-[10px]" />
 
           {/* Reload action */}
           <button

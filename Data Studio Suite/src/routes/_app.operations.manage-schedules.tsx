@@ -141,14 +141,14 @@ function ManageSchedulesPage() {
 
       <Surface className="!p-0">
         <div className="flex flex-wrap items-center gap-3 border-b border-border/60 p-4">
-          <div className="relative flex-1 min-w-[240px]">
+          <div className="relative w-full sm:w-[300px] shrink-0">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search by name, tool, entity or ID..."
-              className="h-10 w-full rounded-lg border border-border/60 bg-card/50 pl-10 pr-3 text-[14px] text-foreground placeholder:text-muted-foreground focus:border-accent/50 focus:outline-none"
+              className="h-9 w-full rounded-lg border border-border/60 bg-card/50 pl-10 pr-3 text-[13px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/40"
             />
           </div>
           <div className="inline-flex items-center gap-1 rounded-lg border border-border/60 bg-card/40 p-1">
@@ -157,7 +157,7 @@ function ManageSchedulesPage() {
                 key={t}
                 onClick={() => setTab(t)}
                 className={cn(
-                  "rounded-md px-3 py-1.5 text-[16px] font-medium transition",
+                  "rounded-md px-3 py-1 text-[13px] font-medium transition",
                   tab === t ? "bg-accent/20 text-accent ring-1 ring-inset ring-accent/40" : "text-muted-foreground hover:text-foreground",
                 )}
               >
@@ -165,10 +165,13 @@ function ManageSchedulesPage() {
               </button>
             ))}
           </div>
-          <button className="inline-flex h-10 items-center gap-2 rounded-lg border border-border/60 bg-card/60 px-3 text-[14px] font-medium text-foreground/80">
+          <button className="inline-flex h-9 items-center gap-2 rounded-lg border border-border/60 bg-card/60 px-3 text-[13px] font-medium text-foreground/80">
             All Frequencies <ChevronDown className="h-4 w-4 opacity-70" />
           </button>
-          <span className="text-[16px] text-muted-foreground">
+          
+          <div className="flex-1 min-w-[10px]" />
+
+          <span className="text-[15px] text-muted-foreground">
             {filteredSchedules.length} {filteredSchedules.length === 1 ? "schedule" : "schedules"}
           </span>
           <div className="inline-flex items-center rounded-lg border border-border/60 bg-card/40 p-1">
@@ -187,8 +190,8 @@ function ManageSchedulesPage() {
           <table className="w-full text-left text-[14px]">
             <thead>
               <tr className="border-b border-border/60 bg-foreground/[0.04] text-[12px] font-bold tracking-wide text-muted-foreground/70">
-                <th className="px-5 py-3 table-sticky-col-1"><input type="checkbox" className="rounded border-border/60 bg-card/60 accent-accent" /></th>
-                <SortTh className="table-sticky-col-2-wide">Scheduler Name</SortTh>
+                <th className="px-5 py-3 table-sticky-col-1-wide"><input type="checkbox" className="rounded border-border/60 bg-card/60 accent-accent" /></th>
+                <SortTh className="table-sticky-col-2-wide w-full">Scheduler Name</SortTh>
                 <SortTh>Entity</SortTh>
                 <SortTh>Data Source</SortTh>
                 <SortTh>Connector</SortTh>
@@ -204,21 +207,21 @@ function ManageSchedulesPage() {
             <tbody>
               {paginatedSchedules.map((s) => (
                 <tr key={s.name} className="border-b border-border/40 last:border-0 hover:bg-foreground/[0.02]">
-                  <td className="px-5 py-4 table-sticky-col-1"><input type="checkbox" className="rounded border-border/60 bg-card/60 accent-accent" /></td>
+                  <td className="px-5 py-4 table-sticky-col-1-wide"><input type="checkbox" className="rounded border-border/60 bg-card/60 accent-accent" /></td>
                   <td className="px-5 py-4 table-sticky-col-2-wide">
                     <div className="font-semibold text-foreground">{s.name}</div>
                     <span className="mt-1 inline-flex items-center gap-1 rounded-md bg-warning/15 px-1.5 py-0.5 text-[15px] font-medium text-warning ring-1 ring-inset ring-warning/25">{s.priority}</span>
                   </td>
                   <td className="px-5 py-4 font-mono text-[16px] text-foreground/80">{s.entity}</td>
-                  <td className="px-5 py-4"><span className="inline-flex h-6 min-w-[24px] items-center justify-center rounded-md bg-foreground/[0.05] px-2 text-[16px] text-muted-foreground ring-1 ring-inset ring-border/60">{s.dataSource}</span></td>
-                  <td className="px-5 py-4"><span className="inline-flex h-6 min-w-[24px] items-center justify-center rounded-md bg-foreground/[0.05] px-2 text-[16px] text-muted-foreground ring-1 ring-inset ring-border/60">{s.connector}</span></td>
-                  <td className="px-5 py-4"><span className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-foreground/[0.05] text-[16px] text-foreground/80 ring-1 ring-inset ring-border/60">{s.layers}</span></td>
+                  <td className="px-5 py-4 text-[15px] font-semibold text-foreground/80">{s.dataSource}</td>
+                  <td className="px-5 py-4 text-[15px] font-semibold text-foreground/80">{s.connector}</td>
+                  <td className="px-5 py-4 text-[15px] font-semibold text-foreground/80">{s.layers}</td>
                   <td className="px-5 py-4">
                     <span className="inline-flex items-center gap-1.5 rounded-md bg-info/15 px-2 py-1 text-[15px] font-medium text-info ring-1 ring-inset ring-info/25">
                       <span className="h-1.5 w-1.5 rounded-full bg-info" /> {s.flowType}
                     </span>
                   </td>
-                  <td className="px-5 py-4"><span className="inline-flex items-center rounded-md bg-foreground/[0.04] px-2 py-1 text-[15px] text-foreground/80 ring-1 ring-inset ring-border/60">{s.frequency}</span></td>
+                  <td className="px-5 py-4 text-[15px] font-semibold text-foreground/80">{s.frequency}</td>
                   <td className="px-5 py-4">
                     <span className="inline-flex items-center gap-1.5 text-[16px] text-muted-foreground">
                       <Clock className="h-3.5 w-3.5" /> {s.lastRun}

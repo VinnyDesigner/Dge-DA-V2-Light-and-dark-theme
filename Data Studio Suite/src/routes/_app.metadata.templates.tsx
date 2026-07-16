@@ -273,8 +273,8 @@ function MetadataRegistryPage() {
         {/* Filters Ribbon */}
         <div className="flex flex-wrap items-center gap-3 mb-5">
           {/* Search box */}
-          <div className="relative flex-1 min-w-[240px] max-w-md">
-            <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+          <div className="relative w-full sm:w-[300px] shrink-0">
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input
               type="text"
               placeholder="Search layer, entity, owner, standard..."

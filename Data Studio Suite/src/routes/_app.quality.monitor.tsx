@@ -210,14 +210,14 @@ function DataQualityPage() {
       {/* Search + Filter */}
       <Surface className="!p-3">
         <div className="flex flex-wrap items-center gap-3">
-          <div className="relative flex-1 min-w-[240px]">
+          <div className="relative w-full sm:w-[300px] shrink-0">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search delivery code or stakeholder..."
-              className="h-10 w-full rounded-lg border border-border/60 bg-card/50 pl-10 pr-3 text-[14px] text-foreground placeholder:text-muted-foreground focus:border-accent/50 focus:outline-none"
+              className="h-9 w-full rounded-lg border border-border/60 bg-card/50 pl-10 pr-3 text-[13px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/40"
             />
           </div>
           <div className="relative">
@@ -225,7 +225,7 @@ function DataQualityPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="h-10 rounded-lg border border-border/60 bg-card/50 pl-9 pr-8 text-[14px] font-medium text-foreground focus:border-accent/50 focus:outline-none appearance-none cursor-pointer"
+              className="h-9 rounded-lg border border-border/60 bg-card/50 pl-9 pr-8 text-[13px] font-medium text-foreground focus:outline-none appearance-none cursor-pointer"
             >
               <option>All Statuses</option>
               <option>QA not run</option>

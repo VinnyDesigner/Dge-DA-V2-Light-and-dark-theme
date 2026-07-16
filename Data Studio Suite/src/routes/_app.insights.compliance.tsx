@@ -533,7 +533,7 @@ function MetadataCompliancePage() {
       {/* Visualizations row (3 columns) */}
       <div className="grid gap-4 lg:grid-cols-3">
         {/* Completeness Trend */}
-        <Surface>
+        <Surface className="min-w-0">
           <div className="mb-4">
             <div className="text-h4 text-foreground">Completeness Trend</div>
             <div className="text-[13px] text-muted-foreground">Average metadata completeness score over 6 months</div>
@@ -542,7 +542,7 @@ function MetadataCompliancePage() {
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={completenessTrendData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                 <defs>
-                  <linearGradient id="colorCompleteness" x1="0" x2="0" y1="0" y2="1">
+                  <linearGradient id="colorCompleteness" x1="0" x2="0" y1="0" x2="1">
                     <stop offset="5%" stopColor="#7c3aed" stopOpacity={0.2} />
                     <stop offset="95%" stopColor="#7c3aed" stopOpacity={0} />
                   </linearGradient>
@@ -562,7 +562,7 @@ function MetadataCompliancePage() {
         </Surface>
 
         {/* Compliance Distribution */}
-        <Surface>
+        <Surface className="min-w-0">
           <div className="mb-4">
             <div className="text-h4 text-foreground">Compliance Distribution</div>
             <div className="text-[13px] text-muted-foreground">Compliant vs partial vs non-compliant</div>
@@ -609,7 +609,7 @@ function MetadataCompliancePage() {
         </Surface>
 
         {/* Top Missing Metadata Fields */}
-        <Surface>
+        <Surface className="min-w-0">
           <div className="mb-4">
             <div className="text-h4 text-foreground">Top Missing Metadata Fields</div>
             <div className="text-[13px] text-muted-foreground">Most frequently absent metadata fields</div>
@@ -647,8 +647,8 @@ function MetadataCompliancePage() {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="relative">
-              <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
+            <div className="relative w-full sm:w-[300px] shrink-0">
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <input
                 type="text"
                 value={query}
@@ -657,7 +657,7 @@ function MetadataCompliancePage() {
                   setCurrentPage(1);
                 }}
                 placeholder="Search layers..."
-                className="w-full sm:w-[220px] rounded-lg border border-border/60 bg-foreground/[0.02] py-1.5 pl-9 pr-3 text-[13px] text-foreground placeholder:text-muted-foreground focus:outline-none"
+                className="h-9 w-full rounded-lg border border-border/60 bg-card/50 pl-10 pr-3 text-[13px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/40"
               />
             </div>
 

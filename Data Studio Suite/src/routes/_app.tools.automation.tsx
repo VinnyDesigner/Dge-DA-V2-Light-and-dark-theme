@@ -326,8 +326,8 @@ function AutomationToolsPage() {
       {/* Surface wrapper with search and table list */}
       <Surface padded={false}>
         <div className="flex flex-col gap-3 border-b border-border/60 p-4 sm:flex-row sm:items-center justify-between">
-          <div className="relative flex-1 max-w-md">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
+          <div className="relative w-full sm:w-[300px] shrink-0">
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input
               type="text"
               value={query}
@@ -336,9 +336,11 @@ function AutomationToolsPage() {
                 setCurrentPage(1);
               }}
               placeholder="Search tools..."
-              className="w-full rounded-lg border border-border/60 bg-foreground/[0.02] py-2 pl-9 pr-3 text-[14px] text-foreground placeholder:text-muted-foreground focus:border-accent/50 focus:outline-none"
+              className="h-9 w-full rounded-lg border border-border/60 bg-card/50 pl-10 pr-3 text-[13px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/40"
             />
           </div>
+
+          <div className="flex-1 min-w-[10px]" />
 
           <div className="flex items-center gap-3 flex-wrap">
             <div className="inline-flex items-center gap-1 rounded-lg border border-border/60 bg-card/40 p-1">

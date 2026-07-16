@@ -290,14 +290,14 @@ function QualityRulesPage() {
       <Surface className="!p-0">
         {/* Search + filters row */}
         <div className="flex flex-wrap items-center gap-3 border-b border-border/60 p-4">
-          <div className="relative min-w-[240px] flex-1">
+          <div className="relative w-full sm:w-[300px] shrink-0">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search rules by name, ID..."
-              className="h-10 w-full rounded-lg border border-border/60 bg-card/50 pl-10 pr-3 text-[14px] text-foreground placeholder:text-muted-foreground focus:border-accent/50 focus:outline-none"
+              className="h-9 w-full rounded-lg border border-border/60 bg-card/50 pl-10 pr-3 text-[13px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/40"
             />
           </div>
 
@@ -306,7 +306,7 @@ function QualityRulesPage() {
             <button
               onClick={() => setRuleDropdownOpen(!ruleDropdownOpen)}
               className={cn(
-                "inline-flex h-10 items-center gap-2 rounded-lg border px-3 text-[14px] font-medium transition",
+                "inline-flex h-9 items-center gap-2 rounded-lg border px-3 text-[13px] font-medium transition",
                 activeTab !== "all"
                   ? "border-accent/40 bg-accent/10 text-accent"
                   : "border-border/60 bg-card/50 text-foreground",
@@ -352,7 +352,10 @@ function QualityRulesPage() {
             onChange={setStatus}
             options={["All Statuses", "Existing", "New Proposed"]}
           />
-          <button className="inline-flex h-10 items-center gap-2 rounded-lg bg-success px-4 text-[14px] font-semibold text-white shadow-card transition hover:bg-success/90">
+
+          <div className="flex-1 min-w-[10px]" />
+
+          <button className="inline-flex h-9 items-center gap-2 rounded-lg bg-success px-4 text-[13px] font-semibold text-white shadow-card transition hover:bg-success/90">
             <Plus className="h-4 w-4" />
             Add Custom Rule
           </button>

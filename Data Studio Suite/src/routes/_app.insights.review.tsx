@@ -668,8 +668,8 @@ function DataReviewPage() {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="relative">
-              <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
+            <div className="relative w-full sm:w-[300px] shrink-0">
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <input
                 type="text"
                 value={query}
@@ -677,8 +677,8 @@ function DataReviewPage() {
                   setQuery(e.target.value);
                   setCurrentPage(1);
                 }}
-                placeholder="Search layers, entitie..."
-                className="w-full sm:w-[220px] rounded-lg border border-border/60 bg-foreground/[0.02] py-1.5 pl-9 pr-3 text-[13px] text-foreground placeholder:text-muted-foreground focus:outline-none"
+                placeholder="Search layers, entities..."
+                className="h-9 w-full rounded-lg border border-border/60 bg-card/50 pl-10 pr-3 text-[13px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/40"
               />
             </div>
 

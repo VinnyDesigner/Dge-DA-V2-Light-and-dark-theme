@@ -579,7 +579,7 @@ function QaqcObservationsPage() {
       {/* Visualizations row (3 columns) */}
       <div className="grid gap-4 lg:grid-cols-3">
         {/* Issues by Severity */}
-        <Surface>
+        <Surface className="min-w-0">
           <div className="mb-4">
             <div className="text-h4 text-foreground">Issues by Severity</div>
             <div className="text-[13px] text-muted-foreground">Distribution of observation severity levels</div>
@@ -620,7 +620,7 @@ function QaqcObservationsPage() {
         </Surface>
 
         {/* Issues by Entity */}
-        <Surface>
+        <Surface className="min-w-0">
           <div className="mb-4">
             <div className="text-h4 text-foreground">Issues by Entity</div>
             <div className="text-[13px] text-muted-foreground">Total observations per entity</div>
@@ -644,7 +644,7 @@ function QaqcObservationsPage() {
         </Surface>
 
         {/* Observations Trend */}
-        <Surface>
+        <Surface className="min-w-0">
           <div className="mb-4 flex items-center justify-between">
             <div>
               <div className="text-h4 text-foreground">Observations Trend</div>
@@ -662,11 +662,27 @@ function QaqcObservationsPage() {
                   labelStyle={{ color: isLight ? "#1e293b" : "#fff" }}
                   itemStyle={{ color: isLight ? "#1e293b" : "#fff" }}
                 />
-                <Line type="monotone" dataKey="open" stroke="#ef4444" strokeWidth={2} name="Open" dot={false} />
-                <Line type="monotone" dataKey="inReview" stroke="#f59e0b" strokeWidth={2} name="In Review" dot={false} />
-                <Line type="monotone" dataKey="resolved" stroke="#10b981" strokeWidth={2} name="Resolved" dot={false} />
+                <Line type="monotone" dataKey="open" stroke="#ef4444" strokeWidth={2.5} name="Open" dot={{ r: 4, fill: "#ef4444", strokeWidth: 0 }} activeDot={{ r: 6 }} />
+                <Line type="monotone" dataKey="inReview" stroke="#f59e0b" strokeWidth={2.5} name="In Review" dot={{ r: 4, fill: "#f59e0b", strokeWidth: 0 }} activeDot={{ r: 6 }} />
+                <Line type="monotone" dataKey="resolved" stroke="#10b981" strokeWidth={2.5} name="Resolved" dot={{ r: 4, fill: "#10b981", strokeWidth: 0 }} activeDot={{ r: 6 }} />
               </LineChart>
             </ResponsiveContainer>
+          </div>
+          
+          {/* Custom Legend (dots and text) */}
+          <div className="mt-4 flex items-center justify-center gap-4 text-[12px] font-semibold">
+            <div className="flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-[#ef4444]" />
+              <span className="text-muted-foreground">Open</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-[#f59e0b]" />
+              <span className="text-muted-foreground">In Review</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-[#10b981]" />
+              <span className="text-muted-foreground">Resolved</span>
+            </div>
           </div>
         </Surface>
       </div>
@@ -685,8 +701,8 @@ function QaqcObservationsPage() {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="relative">
-              <Search className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
+            <div className="relative w-full sm:w-[300px] shrink-0">
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <input
                 type="text"
                 value={query}
@@ -694,8 +710,8 @@ function QaqcObservationsPage() {
                   setQuery(e.target.value);
                   setCurrentPage(1);
                 }}
-                placeholder="Search observa..."
-                className="w-full sm:w-[220px] rounded-lg border border-border/60 bg-foreground/[0.02] py-1.5 pl-9 pr-3 text-[13px] text-foreground placeholder:text-muted-foreground focus:outline-none"
+                placeholder="Search observations..."
+                className="h-9 w-full rounded-lg border border-border/60 bg-card/50 pl-10 pr-3 text-[13px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/40"
               />
             </div>
 

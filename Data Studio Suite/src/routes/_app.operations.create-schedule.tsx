@@ -111,16 +111,17 @@ function CreateSchedulePage() {
               </div>
 
               <Surface className="!p-4">
-                <div className="flex items-center gap-3">
-                  <div className="relative flex-1">
+                <div className="flex flex-wrap items-center gap-3">
+                  <div className="relative w-full sm:w-[300px] shrink-0">
                     <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                     <input
                       type="text"
                       placeholder="Search by name, code or region..."
-                      className="h-10 w-full rounded-lg border border-border/60 bg-card/50 pl-10 pr-3 text-[14px] text-foreground placeholder:text-muted-foreground focus:border-accent/50 focus:outline-none"
+                      className="h-9 w-full rounded-lg border border-border/60 bg-card/50 pl-10 pr-3 text-[13px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/40"
                     />
                   </div>
-                  <span className="text-[16px] text-muted-foreground shrink-0">5 results</span>
+                  <div className="flex-1 min-w-[10px]" />
+                  <span className="text-[15px] text-muted-foreground shrink-0">5 results</span>
                 </div>
               </Surface>
 

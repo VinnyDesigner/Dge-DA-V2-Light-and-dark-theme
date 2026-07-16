@@ -102,7 +102,7 @@ function WorkflowPage() {
             <input
               type="text"
               placeholder="Search runs..."
-              className="h-10 w-full rounded-lg border border-border/60 bg-card/50 pl-10 pr-3 text-[14px] text-foreground placeholder:text-muted-foreground focus:border-accent/50 focus:outline-none"
+              className="h-9 w-full rounded-lg border border-border/60 bg-card/50 pl-10 pr-3 text-[13px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary/40"
             />
           </div>
           <div className="mt-3 flex flex-wrap items-center gap-1 rounded-lg border border-border/60 bg-card/40 p-1">
