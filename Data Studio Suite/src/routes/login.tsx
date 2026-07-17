@@ -397,11 +397,11 @@ function Login() {
   };
 
   return (
-    <div className="relative min-h-dvh overflow-hidden bg-background text-foreground">
+    <div className="relative min-h-dvh lg:h-dvh lg:overflow-hidden bg-background text-foreground">
       <AmbientBackdrop />
 
       {/* Centered container — tighter gutters */}
-      <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-none flex-col login-container-strict">
+      <div className="relative z-10 mx-auto flex min-h-dvh lg:h-dvh w-full max-w-none flex-col login-container-strict lg:overflow-hidden">
 
         {/* Top logo bar */}
         <motion.header
@@ -425,205 +425,216 @@ function Login() {
         {/* Body Grid: 3 columns on desktop for mathematically equal distribution */}
         <div className="grid flex-1 grid-cols-1 items-center lg:items-stretch justify-items-center gap-6 pt-2 pb-6 lg:pt-2 xl:pt-3 lg:pb-8 lg:grid-cols-[1.1fr_1.1fr_1.2fr] lg:grid-rows-[auto_1fr] lg:gap-6 xl:gap-8 lg:justify-items-stretch login-body-grid">
 
-          {/* -------------------- HERO COPY (Spans Col 1 & Col 2) -------------------- */}
-          <div className="relative order-1 col-span-1 lg:col-start-1 lg:col-span-2 lg:row-start-1 justify-self-start flex flex-col items-start text-left w-full max-w-[500px] lg:max-w-none lg:self-start login-hero-wrapper">
-            <div className="relative w-full flex items-center gap-4 sm:gap-5 login-logo-title-group">
-              {/* Premium Glow Highlight Effect behind title */}
-              <div className="absolute -left-12 -top-12 -right-12 -bottom-12 pointer-events-none bg-gradient-to-r from-primary/25 via-accent/15 to-info/20 blur-3xl opacity-75 rounded-full" />
-              
-              <AnimatedLogo />
-
-              <div className="flex flex-row items-start gap-3.5 flex-1 min-w-0">
-                <motion.div
-                  initial={{ opacity: 0, x: -12, filter: "blur(6px)" }}
-                  animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                  whileHover={{ 
-                    scale: 1.01, 
-                    x: 3, 
-                    filter: "drop-shadow(0 4px 20px rgba(56,189,248,0.4))"
-                  }}
-                  transition={{ 
-                    type: "spring", 
-                    stiffness: 250, 
-                    damping: 18,
-                    x: { duration: 0.3 }
-                  }}
-                  className="relative text-[24px] min-[400px]:text-[28px] sm:text-[34px] md:text-[38px] lg:text-[28px] xl:text-[40px] 2xl:text-[52px] font-extrabold leading-[1.02] tracking-[-0.02em] bg-gradient-to-r from-white via-slate-100 to-sky-300 bg-clip-text text-transparent drop-shadow-[0_4px_16px_rgba(56,189,248,0.25)] login-hero-heading cursor-default select-none"
-                >
-                  <span className="whitespace-nowrap">Data Automation Studio</span>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.1 }}
-                  className="inline-flex w-fit items-center gap-2 rounded-full border border-success/30 bg-success/10 px-3 py-1 text-[10.5px] font-semibold tracking-wide text-success shrink-0 sm:mt-1.5 xl:mt-2.5"
-                >
-                  <span className="relative flex h-1.5 w-1.5">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success/70" />
-                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
-                  </span>
-                  Live Enterprise Data Platform
-                </motion.div>
-              </div>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15 }}
-              className="w-full mt-2"
-            >
-              <FloatingKeywords />
-            </motion.div>
-
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.25 }}
-              className="mt-5 max-w-[750px] text-[12px] sm:text-[13.5px] lg:text-[13px] xl:text-[15px] 2xl:text-[17px] leading-[1.75] text-muted-foreground login-hero-paragraph"
-            >
-              A secure command center for government-grade data workflows —
-              orchestrating validation, transformation, metadata and quality
-              across every layer of the pipeline.
-            </motion.p>
-          </div>
-
-          <div className="col-span-1 order-2 lg:col-start-1 lg:row-start-2 flex items-center justify-center lg:justify-start lg:self-center lg:pt-0 pb-5 overflow-visible">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative w-full h-full max-w-[340px] sm:max-w-[360px] lg:max-w-[384px] xl:max-w-[460px] 2xl:max-w-[540px] max-h-full aspect-square pointer-events-none select-none overflow-visible"
-            >
-              {/* Radial gradient mask to feather edges into transparency */}
-              <div 
-                className="relative w-full h-full opacity-80"
-                style={{
-                  maskImage: "radial-gradient(circle at 50% 50%, black 15%, transparent 75%)",
-                  WebkitMaskImage: "radial-gradient(circle at 50% 50%, black 15%, transparent 75%)",
-                }}
-              >
-                <img
-                  src="/data_hub_isometric.png"
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
+          {/* -------------------- HERO SECTION (Hero Copy + Illustrations) -------------------- */}
+          <div className="col-span-1 lg:col-span-2 lg:row-span-2 flex flex-col justify-center gap-6 w-full h-full login-hero-section origin-left">
+            
+            {/* Hero Copy */}
+            <div className="relative flex flex-col items-start text-left w-full max-w-[500px] lg:max-w-none login-hero-wrapper">
+              <div className="relative w-full flex items-center gap-4 sm:gap-5 login-logo-title-group">
+                {/* Premium Glow Highlight Effect behind title */}
+                <div className="absolute -left-12 -top-12 -right-12 -bottom-12 pointer-events-none bg-gradient-to-r from-primary/25 via-accent/15 to-info/20 blur-3xl opacity-75 rounded-full" />
                 
-                {/* Radial Gradient overlay to blend the image colors seamlessly into the #0e1828 background */}
-                <div 
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    backgroundImage: "radial-gradient(circle, transparent 20%, #0e1828 75%)"
-                  }}
-                />
+                <AnimatedLogo />
 
-                {/* Grid overlay specifically on top of the image to show lines passing through the artwork */}
-                <div 
-                  className="absolute inset-0 opacity-[0.08]"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(var(--muted-foreground) 1px, transparent 1px), linear-gradient(90deg, var(--muted-foreground) 1px, transparent 1px)",
-                    backgroundSize: "56px 56px",
-                    maskImage: "radial-gradient(circle at 50% 50%, black 20%, transparent 80%)",
-                    WebkitMaskImage: "radial-gradient(circle at 50% 50%, black 20%, transparent 80%)",
-                  }}
-                />
+                <div className="flex flex-row items-start gap-3.5 flex-1 min-w-0">
+                  <motion.div
+                    initial={{ opacity: 0, x: -12, filter: "blur(6px)" }}
+                    animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                    whileHover={{ 
+                      scale: 1.01, 
+                      x: 3, 
+                      filter: "drop-shadow(0 4px 20px rgba(56,189,248,0.4))"
+                    }}
+                    transition={{ 
+                      type: "spring", 
+                      stiffness: 250, 
+                      damping: 18,
+                      x: { duration: 0.3 }
+                    }}
+                    className="relative text-[24px] min-[400px]:text-[28px] sm:text-[34px] md:text-[38px] lg:text-[28px] xl:text-[40px] 2xl:text-[52px] font-extrabold leading-[1.02] tracking-[-0.02em] bg-gradient-to-r from-white via-slate-100 to-sky-300 bg-clip-text text-transparent drop-shadow-[0_4px_16px_rgba(56,189,248,0.25)] login-hero-heading cursor-default select-none"
+                  >
+                    <span className="whitespace-nowrap">Data Automation Studio</span>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.1 }}
+                    className="inline-flex w-fit items-center gap-2 rounded-full border border-success/30 bg-success/10 px-3 py-1 text-[10.5px] font-semibold tracking-wide text-success shrink-0 sm:mt-1.5 xl:mt-2.5"
+                  >
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success/70" />
+                      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-success" />
+                    </span>
+                    Live Enterprise Data Platform
+                  </motion.div>
+                </div>
               </div>
 
-              {/* Glowing isometric circuit pulses overlay */}
-              <svg className="absolute inset-0 w-full h-full z-10 pointer-events-none opacity-85" viewBox="0 0 100 100">
-                <defs>
-                  <linearGradient id="line-glow-blue" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="var(--info)" stopOpacity="0" />
-                    <stop offset="50%" stopColor="var(--info)" stopOpacity="1" />
-                    <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
-                  </linearGradient>
-                  <linearGradient id="line-glow-cyan" x1="100%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="var(--info)" stopOpacity="0" />
-                    <stop offset="50%" stopColor="var(--info)" stopOpacity="1" />
-                    <stop offset="100%" stopColor="var(--primary)" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.15 }}
+                className="w-full mt-2"
+              >
+                <FloatingKeywords />
+              </motion.div>
 
-                {/* Circuit path 1: Upper-left to Lower-right isometric angle */}
-                <motion.path
-                  d="M 20 40 L 45 52 L 80 70"
-                  fill="none"
-                  stroke="url(#line-glow-blue)"
-                  strokeWidth="0.8"
-                  strokeLinecap="round"
-                  strokeDasharray="15 45"
-                  animate={{ strokeDashoffset: [60, 0] }}
-                  transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
-                />
+              <motion.p
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.25 }}
+                className="mt-5 max-w-[750px] text-[12px] sm:text-[13.5px] lg:text-[13px] xl:text-[15px] 2xl:text-[17px] leading-[1.75] text-muted-foreground login-hero-paragraph"
+              >
+                A secure command center for government-grade data workflows —
+                orchestrating validation, transformation, metadata and quality
+                across every layer of the pipeline.
+              </motion.p>
+            </div>
 
-                {/* Circuit path 2: Lower-left to Upper-right isometric angle */}
-                <motion.path
-                  d="M 15 65 L 42 51 L 75 35"
-                  fill="none"
-                  stroke="url(#line-glow-cyan)"
-                  strokeWidth="0.8"
-                  strokeLinecap="round"
-                  strokeDasharray="12 38"
-                  animate={{ strokeDashoffset: [50, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: 1 }}
-                />
-
-                {/* Circuit path 3: Core vertical connection */}
-                <motion.path
-                  d="M 50 18 L 50 48 L 50 82"
-                  fill="none"
-                  stroke="url(#line-glow-blue)"
-                  strokeWidth="0.6"
-                  strokeLinecap="round"
-                  strokeDasharray="10 30"
-                  animate={{ strokeDashoffset: [40, 0] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-                />
-
-                {/* Circuit path 4: Outer ring pulse */}
-                <motion.path
-                  d="M 30 50 A 20 20 0 1 0 70 50 A 20 20 0 1 0 30 50"
-                  fill="none"
-                  stroke="var(--info)"
-                  strokeWidth="0.4"
-                  strokeLinecap="round"
-                  strokeDasharray="8 40"
-                  animate={{ strokeDashoffset: [48, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-                  opacity="0.6"
-                />
-              </svg>
+            {/* Illustrations Row */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full items-center justify-items-stretch">
               
-              {/* Rotating/pulsing ambient blue highlight glow behind the artwork */}
-              <motion.div 
-                animate={{ 
-                  scale: [1, 1.08, 1],
-                  opacity: [0.65, 0.85, 0.65],
-                  rotate: [0, 360]
-                }}
-                transition={{ 
-                  duration: 15, 
-                  repeat: Infinity, 
-                  ease: "linear" 
-                }}
-                className="absolute -inset-14 bg-[radial-gradient(circle,rgba(6,182,212,0.22)_0%,rgba(37,99,235,0.12)_50%,transparent_100%)] blur-3xl rounded-full pointer-events-none z-[-1]"
-              />
-            </motion.div>
-          </div>
+              {/* Blended Image */}
+              <div className="flex items-center justify-center lg:justify-start lg:pt-0 pb-5 overflow-visible">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="relative w-full h-full max-w-[340px] sm:max-w-[360px] lg:max-w-[384px] xl:max-w-[460px] 2xl:max-w-[540px] max-h-full aspect-square pointer-events-none select-none overflow-visible"
+                >
+                  {/* Radial gradient mask to feather edges into transparency */}
+                  <div 
+                    className="relative w-full h-full opacity-80"
+                    style={{
+                      maskImage: "radial-gradient(circle at 50% 50%, black 15%, transparent 75%)",
+                      WebkitMaskImage: "radial-gradient(circle at 50% 50%, black 15%, transparent 75%)",
+                    }}
+                  >
+                    <img
+                      src="/data_hub_isometric.png"
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
+                    
+                    {/* Radial Gradient overlay to blend the image colors seamlessly into the #0e1828 background */}
+                    <div 
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        backgroundImage: "radial-gradient(circle, transparent 20%, #0e1828 75%)"
+                      }}
+                    />
 
-          {/* -------------------- COLUMN 2 BOTTOM / Interactive Circular Hub -------------------- */}
-          <div className="col-span-1 order-3 lg:col-start-2 lg:row-start-2 flex items-center justify-center lg:justify-center lg:self-center lg:pt-0 pb-5 overflow-visible">
-            <div className="hidden xl:block w-full h-full max-w-[380px] xl:max-w-[460px] 2xl:max-w-[540px] max-h-full aspect-square overflow-visible">
-              <CircularHub />
+                    {/* Grid overlay specifically on top of the image to show lines passing through the artwork */}
+                    <div 
+                      className="absolute inset-0 opacity-[0.08]"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(var(--muted-foreground) 1px, transparent 1px), linear-gradient(90deg, var(--muted-foreground) 1px, transparent 1px)",
+                        backgroundSize: "56px 56px",
+                        maskImage: "radial-gradient(circle at 50% 50%, black 20%, transparent 80%)",
+                        WebkitMaskImage: "radial-gradient(circle at 50% 50%, black 20%, transparent 80%)",
+                      }}
+                    />
+                  </div>
+
+                  {/* Glowing isometric circuit pulses overlay */}
+                  <svg className="absolute inset-0 w-full h-full z-10 pointer-events-none opacity-85" viewBox="0 0 100 100">
+                    <defs>
+                      <linearGradient id="line-glow-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="var(--info)" stopOpacity="0" />
+                        <stop offset="50%" stopColor="var(--info)" stopOpacity="1" />
+                        <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
+                      </linearGradient>
+                      <linearGradient id="line-glow-cyan" x1="100%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="var(--info)" stopOpacity="0" />
+                        <stop offset="50%" stopColor="var(--info)" stopOpacity="1" />
+                        <stop offset="100%" stopColor="var(--primary)" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+
+                    {/* Circuit path 1: Upper-left to Lower-right isometric angle */}
+                    <motion.path
+                      d="M 20 40 L 45 52 L 80 70"
+                      fill="none"
+                      stroke="url(#line-glow-blue)"
+                      strokeWidth="0.8"
+                      strokeLinecap="round"
+                      strokeDasharray="15 45"
+                      animate={{ strokeDashoffset: [60, 0] }}
+                      transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
+                    />
+
+                    {/* Circuit path 2: Lower-left to Upper-right isometric angle */}
+                    <motion.path
+                      d="M 15 65 L 42 51 L 75 35"
+                      fill="none"
+                      stroke="url(#line-glow-cyan)"
+                      strokeWidth="0.8"
+                      strokeLinecap="round"
+                      strokeDasharray="12 38"
+                      animate={{ strokeDashoffset: [50, 0] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "linear", delay: 1 }}
+                    />
+
+                    {/* Circuit path 3: Core vertical connection */}
+                    <motion.path
+                      d="M 50 18 L 50 48 L 50 82"
+                      fill="none"
+                      stroke="url(#line-glow-blue)"
+                      strokeWidth="0.6"
+                      strokeLinecap="round"
+                      strokeDasharray="10 30"
+                      animate={{ strokeDashoffset: [40, 0] }}
+                      transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                    />
+
+                    {/* Circuit path 4: Outer ring pulse */}
+                    <motion.path
+                      d="M 30 50 A 20 20 0 1 0 70 50 A 20 20 0 1 0 30 50"
+                      fill="none"
+                      stroke="var(--info)"
+                      strokeWidth="0.4"
+                      strokeLinecap="round"
+                      strokeDasharray="8 40"
+                      animate={{ strokeDashoffset: [48, 0] }}
+                      transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+                      opacity="0.6"
+                    />
+                  </svg>
+                  
+                  {/* Rotating/pulsing ambient blue highlight glow behind the artwork */}
+                  <motion.div 
+                    animate={{ 
+                      scale: [1, 1.08, 1],
+                      opacity: [0.65, 0.85, 0.65],
+                      rotate: [0, 360]
+                    }}
+                    transition={{ 
+                      duration: 15, 
+                      repeat: Infinity, 
+                      ease: "linear" 
+                    }}
+                    className="absolute -inset-14 bg-[radial-gradient(circle,rgba(6,182,212,0.22)_0%,rgba(37,99,235,0.12)_50%,transparent_100%)] blur-3xl rounded-full pointer-events-none z-[-1]"
+                  />
+                </motion.div>
+              </div>
+
+              {/* Circular Hub */}
+              <div className="flex items-center justify-center lg:justify-center lg:pt-0 pb-5 overflow-visible">
+                <div className="hidden xl:block w-full h-full max-w-[380px] xl:max-w-[460px] 2xl:max-w-[540px] max-h-full aspect-square overflow-visible">
+                  <CircularHub />
+                </div>
+                <div className="hidden sm:block xl:hidden w-full h-full max-w-[280px] max-h-full aspect-square overflow-visible">
+                  <CircularHub compact />
+                </div>
+                <div className="sm:hidden w-full h-full max-w-[280px] max-h-full aspect-square overflow-visible">
+                  <CircularHub compact />
+                </div>
+              </div>
+
             </div>
-            <div className="hidden sm:block xl:hidden w-full h-full max-w-[280px] max-h-full aspect-square overflow-visible">
-              <CircularHub compact />
-            </div>
-            <div className="sm:hidden w-full h-full max-w-[280px] max-h-full aspect-square overflow-visible">
-              <CircularHub compact />
-            </div>
+
           </div>
 
           {/* -------------------- COLUMN 3 / Auth card -------------------- */}
