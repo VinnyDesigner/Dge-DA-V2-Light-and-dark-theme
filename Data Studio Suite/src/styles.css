@@ -1221,19 +1221,43 @@
   }
 }
 
-/* Size and spacing overrides for illustrations on large desktop screens (>=1440px) */
-@media (min-width: 1440px) {
+/* Responsive adjustments for smaller desktop screens (width 1024px to 1599px) */
+@media (min-width: 1024px) and (max-width: 1599px) {
   .login-illustrations-row {
-    margin-top: 2rem !important; /* Move illustrations slightly downward */
-  }
-  .login-illustration-left,
-  .login-illustration-right {
-    max-width: 520px !important; /* Increase size on 1440px+ */
+    position: relative !important;
+    top: -20px !important; /* Move both illustrations upward by ~5% */
   }
 }
 
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .login-illustration-left,
+  .login-illustration-right {
+    max-width: 270px !important; /* Reduced to fit viewport comfortably */
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .login-illustration-left,
+  .login-illustration-right {
+    max-width: 350px !important; /* Reduced to fit viewport comfortably */
+  }
+}
+
+@media (min-width: 1440px) and (max-width: 1599px) {
+  .login-illustrations-row {
+    margin-top: 1rem !important; /* Shifted up slightly */
+  }
+  .login-illustration-left,
+  .login-illustration-right {
+    max-width: 480px !important; /* Reduced to fit viewport comfortably */
+  }
+}
+
+/* Large Desktop Screens (>=1600px) - Preserve current layout exactly */
 @media (min-width: 1600px) {
   .login-illustrations-row {
+    position: static !important;
+    top: auto !important;
     margin-top: 3rem !important; /* Move illustrations downward on larger screens */
   }
   .login-illustration-left,
@@ -1244,6 +1268,8 @@
 
 @media (min-width: 1920px) {
   .login-illustrations-row {
+    position: static !important;
+    top: auto !important;
     margin-top: 4.5rem !important; /* Move illustrations further downward on massive screens */
   }
   .login-illustration-left,
@@ -1252,20 +1278,6 @@
   }
 }
 
-/* Responsive max-width overrides to prevent illustrations from overflowing and getting hidden behind the login card */
-@media (min-width: 1024px) and (max-width: 1279px) {
-  .login-illustration-left,
-  .login-illustration-right {
-    max-width: 290px !important; /* Scale down responsively to fit the columns */
-  }
-}
-
-@media (min-width: 1280px) and (max-width: 1439px) {
-  .login-illustration-left,
-  .login-illustration-right {
-    max-width: 380px !important; /* Scale down responsively to fit the columns */
-  }
-}
 
 
 
