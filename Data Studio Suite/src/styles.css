@@ -838,6 +838,14 @@
   }
 }
 
+/* Reduce horizontal empty space on large screens (>=1600px) */
+@media (min-width: 1600px) {
+  .login-container-strict {
+    max-width: 1680px !important;
+    width: 100% !important;
+  }
+}
+
 /* Responsive adjustments for 1920px+ viewports (keeps existing layout) */
 @media (min-width: 1920px) {
   .login-body-grid {
