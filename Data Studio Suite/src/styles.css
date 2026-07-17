@@ -838,13 +838,19 @@
   }
 }
 
-/* Reduce horizontal empty space on large screens (>=1600px) */
-@media (min-width: 1600px) {
-  .login-container-strict {
-    max-width: 1680px !important;
-    width: 100% !important;
+/* Optimize empty vertical space on large desktop screens (>=1600px) with tall viewports */
+@media (min-width: 1600px) and (min-height: 1000px) {
+  .login-body-grid {
+    padding-bottom: 14rem !important;
   }
 }
+
+@media (min-width: 1600px) and (min-height: 1200px) {
+  .login-body-grid {
+    padding-bottom: 22rem !important;
+  }
+}
+
 
 /* Responsive adjustments for 1920px+ viewports (keeps existing layout) */
 @media (min-width: 1920px) {
