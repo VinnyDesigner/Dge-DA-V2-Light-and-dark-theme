@@ -731,6 +731,15 @@
   }
 }
 
+
+/* Base login card height and centering override */
+.login-card-container {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  min-height: 520px !important; /* Increase login card height by ~100px */
+}
+
 /* Collapsed sidebar layout & icon centering overrides */
 [data-state="collapsed"][data-collapsible="icon"] [data-sidebar="header"] {
   display: flex !important;
@@ -889,6 +898,7 @@
   .login-card-container {
     padding: 3.5rem !important; /* Proportional padding */
     border-radius: 36px !important; /* Proportional border-radius */
+    min-height: 680px !important; /* Proportional card height increase */
   }
 
   .login-card-title {
@@ -1241,5 +1251,21 @@
     max-width: 660px !important; /* Increase size on 1920px+ */
   }
 }
+
+/* Responsive max-width overrides to prevent illustrations from overflowing and getting hidden behind the login card */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .login-illustration-left,
+  .login-illustration-right {
+    max-width: 290px !important; /* Scale down responsively to fit the columns */
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .login-illustration-left,
+  .login-illustration-right {
+    max-width: 380px !important; /* Scale down responsively to fit the columns */
+  }
+}
+
 
 

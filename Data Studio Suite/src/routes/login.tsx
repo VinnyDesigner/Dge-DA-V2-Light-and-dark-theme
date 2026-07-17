@@ -625,10 +625,10 @@ function Login() {
                 <div className="hidden xl:block w-full h-full max-w-[380px] xl:max-w-[460px] 2xl:max-w-[540px] max-h-full aspect-square overflow-visible login-illustration-right">
                   <CircularHub />
                 </div>
-                <div className="hidden sm:block xl:hidden w-full h-full max-w-[280px] max-h-full aspect-square overflow-visible">
+                <div className="hidden sm:block xl:hidden w-full h-full max-w-[280px] max-h-full aspect-square overflow-visible login-illustration-right">
                   <CircularHub compact />
                 </div>
-                <div className="sm:hidden w-full h-full max-w-[280px] max-h-full aspect-square overflow-visible">
+                <div className="sm:hidden w-full h-full max-w-[280px] max-h-full aspect-square overflow-visible login-illustration-right">
                   <CircularHub compact />
                 </div>
               </div>
