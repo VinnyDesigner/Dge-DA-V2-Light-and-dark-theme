@@ -1224,22 +1224,21 @@
 /* Responsive adjustments for smaller desktop screens (width 1024px to 1599px) */
 @media (min-width: 1024px) and (max-width: 1599px) {
   .login-illustrations-row {
-    position: relative !important;
-    top: -20px !important; /* Move both illustrations upward by ~5% */
+    transform: translateY(-30px) !important; /* Move both illustrations upward by approximately 5–8% without using fixed/absolute positioning */
   }
 }
 
 @media (min-width: 1024px) and (max-width: 1279px) {
   .login-illustration-left,
   .login-illustration-right {
-    max-width: 270px !important; /* Reduced to fit viewport comfortably */
+    max-width: 290px !important; /* Reduced responsively to fit columns and viewport */
   }
 }
 
 @media (min-width: 1280px) and (max-width: 1439px) {
   .login-illustration-left,
   .login-illustration-right {
-    max-width: 350px !important; /* Reduced to fit viewport comfortably */
+    max-width: 380px !important; /* Reduced responsively to fit columns and viewport */
   }
 }
 
@@ -1249,15 +1248,14 @@
   }
   .login-illustration-left,
   .login-illustration-right {
-    max-width: 480px !important; /* Reduced to fit viewport comfortably */
+    max-width: 480px !important; /* Reduced by approximately 11% to fit viewport comfortably */
   }
 }
 
 /* Large Desktop Screens (>=1600px) - Preserve current layout exactly */
 @media (min-width: 1600px) {
   .login-illustrations-row {
-    position: static !important;
-    top: auto !important;
+    transform: none !important; /* Reset transform on large screens */
     margin-top: 3rem !important; /* Move illustrations downward on larger screens */
   }
   .login-illustration-left,
@@ -1268,8 +1266,7 @@
 
 @media (min-width: 1920px) {
   .login-illustrations-row {
-    position: static !important;
-    top: auto !important;
+    transform: none !important; /* Reset transform on large screens */
     margin-top: 4.5rem !important; /* Move illustrations further downward on massive screens */
   }
   .login-illustration-left,
@@ -1277,6 +1274,7 @@
     max-width: 660px !important; /* Increase size on 1920px+ */
   }
 }
+
 
 
 
