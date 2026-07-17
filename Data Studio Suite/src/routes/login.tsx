@@ -397,11 +397,11 @@ function Login() {
   };
 
   return (
-    <div className="relative min-h-dvh overflow-hidden bg-background text-foreground">
+    <div className="relative min-h-dvh lg:h-dvh lg:overflow-hidden bg-background text-foreground">
       <AmbientBackdrop />
 
       {/* Centered container — tighter gutters */}
-      <div className="relative z-10 mx-auto flex min-h-dvh w-full max-w-none flex-col login-container-strict">
+      <div className="relative z-10 mx-auto flex min-h-dvh lg:h-dvh w-full max-w-none flex-col login-container-strict lg:overflow-hidden">
 
         {/* Top logo bar */}
         <motion.header
@@ -490,7 +490,7 @@ function Login() {
           </div>
 
           {/* -------------------- COLUMN 1 BOTTOM / Blended Image -------------------- */}
-          <div className="col-span-1 order-2 lg:col-start-1 lg:row-start-2 flex items-center justify-center lg:justify-start lg:self-start lg:pt-0 pb-5 overflow-visible">
+          <div className="hidden lg:flex col-span-1 order-2 lg:col-start-1 lg:row-start-2 items-center justify-center lg:justify-start lg:self-start lg:pt-0 pb-5 overflow-visible">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -615,14 +615,14 @@ function Login() {
           </div>
 
           {/* -------------------- COLUMN 2 BOTTOM / Interactive Circular Hub -------------------- */}
-          <div className="col-span-1 order-3 lg:col-start-2 lg:row-start-2 flex items-center justify-center lg:justify-center lg:self-start lg:pt-0 pb-5 overflow-visible">
-            <div className="hidden xl:block w-[380px] h-[380px] xl:w-[460px] xl:h-[460px] 2xl:w-[540px] 2xl:h-[540px] max-h-[35vh] xl:max-h-[45vh] aspect-square overflow-visible">
+          <div className="hidden lg:flex col-span-1 order-3 lg:col-start-2 lg:row-start-2 items-center justify-center lg:justify-center lg:self-start lg:pt-0 pb-5 overflow-visible">
+            <div className="hidden xl:block w-full max-w-[380px] xl:max-w-[460px] 2xl:max-w-[540px] max-h-[35vh] xl:max-h-[45vh] aspect-square overflow-visible">
               <CircularHub />
             </div>
-            <div className="hidden sm:block xl:hidden w-[280px] h-[280px] max-h-[30vh] aspect-square overflow-visible">
+            <div className="hidden sm:block xl:hidden w-full max-w-[280px] max-h-[30vh] aspect-square overflow-visible">
               <CircularHub compact />
             </div>
-            <div className="sm:hidden w-[280px] h-[280px] max-h-[30vh] aspect-square overflow-visible">
+            <div className="sm:hidden w-full max-w-[280px] max-h-[30vh] aspect-square overflow-visible">
               <CircularHub compact />
             </div>
           </div>
